@@ -6,143 +6,92 @@ export const Portfolio = () => {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Flutter App",
-      description: "A complete e-commerce mobile application with user authentication, product catalog, shopping cart, and payment integration.",
-      technologies: ["Flutter", "Firebase", "Stripe API", "Provider"],
-      image: "🛒",
+      title: "Mobile App Landing Design & Services",
       category: "Mobile App",
-      status: "Completed",
-      demoUrl: "#",
-      githubUrl: "#"
+      image: "📱",
     },
     {
       id: 2,
-      title: "Task Management App",
-      description: "Productivity app with task creation, categorization, reminders, and team collaboration features built with clean architecture.",
-      technologies: ["Flutter", "SQLite", "BLoC Pattern", "Local Notifications"],
-      image: "📋",
-      category: "Productivity",
-      status: "In Progress",
-      demoUrl: "#",
-      githubUrl: "#"
+      title: "Mobile App Landing Design & Services", 
+      category: "Mobile App",
+      image: "📱",
     },
     {
       id: 3,
-      title: "Weather Forecast App",
-      description: "Beautiful weather application with location-based forecasts, interactive maps, and detailed weather information.",
-      technologies: ["Flutter", "REST API", "Geolocator", "Charts"],
-      image: "🌤️",
-      category: "Utility",
-      status: "Completed",
-      demoUrl: "#",
-      githubUrl: "#"
+      title: "Mobile App Landing Design & Services",
+      category: "Mobile App", 
+      image: "📱",
     },
     {
       id: 4,
-      title: "Social Media Dashboard",
-      description: "Analytics dashboard for social media management with real-time data visualization and performance metrics.",
-      technologies: ["Flutter", "Firebase", "Charts", "WebSocket"],
-      image: "📊",
-      category: "Analytics",
-      status: "Completed",
-      demoUrl: "#",
-      githubUrl: "#"
+      title: "Mobile App Landing Design & Services",
+      category: "Mobile App",
+      image: "📱",
+    },
+    {
+      id: 5,
+      title: "Mobile App Landing Design & Services",
+      category: "Mobile App",
+      image: "📱",
+    },
+    {
+      id: 6,
+      title: "Mobile App Landing Design & Services",
+      category: "Mobile App",
+      image: "📱",
     }
   ];
 
   return (
-    <section id="portfolio" className="section-padding bg-muted/30">
+    <section id="portfolio" className="section-padding bg-background">
       <div className="section-container">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Featured Projects</h2>
-          <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed">
-            Showcase of my recent projects demonstrating expertise in Flutter development and modern mobile app architecture.
+          <p className="text-sm text-muted-foreground uppercase tracking-wider mb-4">
+            VISIT MY PORTFOLIO AND KEEP YOUR FEEDBACK
           </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">My Portfolio</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <div 
               key={project.id}
-              className="bg-card rounded-2xl overflow-hidden card-shadow hover:shadow-xl transition-shadow duration-300 h-full flex flex-col"
+              className="bg-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer"
             >
-              {/* Project Header */}
-              <div className="relative h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
-                <div className="text-6xl">{project.image}</div>
-                
-                {/* Status Badge */}
-                <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium ${
-                  project.status === 'Completed' 
-                    ? 'bg-green-100 text-green-800' 
-                    : 'bg-yellow-100 text-yellow-800'
-                }`}>
-                  {project.status}
+              {/* Project Image */}
+              <div className="relative h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center overflow-hidden">
+                <div className="text-6xl group-hover:scale-110 transition-transform duration-300">
+                  {project.image}
                 </div>
-
-                {/* Category Badge */}
-                <div className="absolute top-4 left-4 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">
-                  {project.category}
+                
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                  <Button
+                    size="sm"
+                    variant="secondary"
+                    className="bg-white text-primary hover:bg-white/90"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="secondary"
+                    className="bg-white text-primary hover:bg-white/90"
+                  >
+                    <Github className="h-4 w-4" />
+                  </Button>
                 </div>
               </div>
 
-              {/* Project Content */}
-              <div className="p-8 flex-1 flex flex-col">
-                <div className="flex items-center mb-4">
-                  <Smartphone className="h-5 w-5 text-primary mr-2 flex-shrink-0" />
-                  <h3 className="text-xl font-semibold">{project.title}</h3>
-                </div>
-                
-                <p className="text-muted-foreground mb-6 leading-relaxed flex-1">
-                  {project.description}
-                </p>
-
-                {/* Technology Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies.map((tech) => (
-                    <span 
-                      key={tech}
-                      className="px-3 py-1 bg-muted text-muted-foreground text-xs rounded-md"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex gap-3 mt-auto">
-                  <Button
-                    size="sm"
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground flex-1"
-                    onClick={() => window.open(project.demoUrl, '_blank')}
-                  >
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    Demo
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="border-primary text-primary hover:bg-primary hover:text-primary-foreground flex-1"
-                    onClick={() => window.open(project.githubUrl, '_blank')}
-                  >
-                    <Github className="h-4 w-4 mr-2" />
-                    Code
-                  </Button>
-                </div>
+              {/* Project Info */}
+              <div className="p-6">
+                <p className="text-primary text-sm font-medium mb-2">{project.category}</p>
+                <h3 className="text-lg font-semibold text-foreground leading-tight">
+                  {project.title}
+                </h3>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* View More Projects */}
-        <div className="text-center mt-16">
-          <Button 
-            variant="outline"
-            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3"
-            onClick={() => window.open("#", '_blank')}
-          >
-            View All Projects on GitHub
-            <Github className="ml-2 h-5 w-5" />
-          </Button>
         </div>
       </div>
     </section>

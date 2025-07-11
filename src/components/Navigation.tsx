@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,9 +9,9 @@ export const Navigation = () => {
   const navItems = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
+    { name: "Service", href: "#services" },
     { name: "Portfolio", href: "#portfolio" },
-    { name: "Services", href: "#services" },
+    { name: "Blog", href: "#blog" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -23,13 +24,18 @@ export const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="section-container">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <span className="text-2xl font-bold text-primary">
-              Rajoan
-            </span>
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                <span className="text-primary-foreground font-bold text-sm">R</span>
+              </div>
+              <span className="text-xl font-bold text-foreground">
+                Rajoanpro
+              </span>
+            </div>
           </div>
           
           {/* Desktop Menu */}
@@ -47,6 +53,16 @@ export const Navigation = () => {
             </div>
           </div>
 
+          {/* Hire Me Button */}
+          <div className="hidden md:block">
+            <Button 
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 rounded-md"
+              onClick={() => scrollToSection("#contact")}
+            >
+              Hire Me
+            </Button>
+          </div>
+
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
@@ -61,7 +77,7 @@ export const Navigation = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-border">
+        <div className="md:hidden bg-background border-t border-border">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
               <button
@@ -72,6 +88,12 @@ export const Navigation = () => {
                 {item.name}
               </button>
             ))}
+            <Button 
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 rounded-md mt-4 w-full"
+              onClick={() => scrollToSection("#contact")}
+            >
+              Hire Me
+            </Button>
           </div>
         </div>
       )}

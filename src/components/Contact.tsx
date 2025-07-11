@@ -9,6 +9,7 @@ export const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    subject: "",
     message: ""
   });
 
@@ -20,7 +21,7 @@ export const Contact = () => {
       description: "Thank you for your message. I'll get back to you soon!",
     });
     
-    setFormData({ name: "", email: "", message: "" });
+    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -30,159 +31,192 @@ export const Contact = () => {
     });
   };
 
+  const testimonials = [
+    {
+      name: "Neville A. Stanton",
+      title: "Chief Executive, Daher Corp",
+      text: "Incredible work and professional service. Highly recommended for any Flutter development needs.",
+      rating: 5
+    },
+    {
+      name: "Neville A. Stanton", 
+      title: "Chief Executive, Daher Corp",
+      text: "Amazing attention to detail and excellent communication throughout the project.",
+      rating: 5
+    },
+    {
+      name: "Neville A. Stanton",
+      title: "Chief Executive, Daher Corp", 
+      text: "Delivered exceptional results on time and exceeded our expectations completely.",
+      rating: 5
+    }
+  ];
+
   return (
-    <section id="contact" className="section-padding bg-muted/30">
+    <section id="contact" className="section-padding bg-background">
       <div className="section-container">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Let's Connect</h2>
-          <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed">
-            Have a project in mind or want to discuss opportunities? I'd love to hear from you and bring your ideas to life!
+          <p className="text-sm text-muted-foreground uppercase tracking-wider mb-4">
+            CONTACT
           </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Contact With Me</h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Contact Info */}
+          <div className="space-y-8">
+            <div className="bg-card rounded-2xl p-8">
+              <img 
+                src="/lovable-uploads/af9cc730-9df3-4684-988b-2351ef1cbb55.png"
+                alt="Profile"
+                className="w-20 h-20 rounded-lg object-cover mb-6"
+              />
+              <h3 className="text-2xl font-semibold mb-4">Rajoan Tamjid</h3>
+              <p className="text-muted-foreground mb-6">Flutter Developer</p>
+              <p className="text-muted-foreground mb-8 leading-relaxed">
+                I am available for freelance work. Connect with me via and call in to my account.
+              </p>
+              
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center">
+                  <Phone className="h-5 w-5 text-primary mr-4" />
+                  <span className="text-muted-foreground">+880 123 456 7890</span>
+                </div>
+                <div className="flex items-center">
+                  <Mail className="h-5 w-5 text-primary mr-4" />
+                  <span className="text-muted-foreground">rajoan.antor@example.com</span>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-sm text-muted-foreground uppercase tracking-wider">
+                  FIND WITH ME
+                </p>
+                <div className="flex space-x-4">
+                  <a className="w-12 h-12 bg-background hover:bg-primary transition-colors duration-300 rounded-lg flex items-center justify-center group">
+                    <Github className="h-5 w-5 text-muted-foreground group-hover:text-primary-foreground" />
+                  </a>
+                  <a className="w-12 h-12 bg-background hover:bg-primary transition-colors duration-300 rounded-lg flex items-center justify-center group">
+                    <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-primary-foreground" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonials */}
+            <div className="space-y-4">
+              <p className="text-sm text-muted-foreground uppercase tracking-wider">
+                What They Says
+              </p>
+              {testimonials.map((testimonial, index) => (
+                <div key={index} className="bg-card rounded-2xl p-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary font-semibold">
+                        {testimonial.name.charAt(0)}
+                      </span>
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex text-primary mb-2">
+                        {Array.from({ length: testimonial.rating }).map((_, i) => (
+                          <span key={i}>★</span>
+                        ))}
+                      </div>
+                      <p className="text-muted-foreground text-sm mb-3">
+                        {testimonial.text}
+                      </p>
+                      <p className="text-foreground font-medium text-sm">
+                        {testimonial.name}
+                      </p>
+                      <p className="text-muted-foreground text-xs">
+                        {testimonial.title}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Contact Form */}
-          <div className="bg-card rounded-2xl p-8 card-shadow h-fit">
-            <h3 className="text-2xl font-semibold mb-8 flex items-center">
-              <MessageCircle className="h-6 w-6 text-primary mr-3" />
-              Send a Message
-            </h3>
-            
+          <div className="bg-card rounded-2xl p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-3">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                  placeholder="Enter your name"
-                />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium mb-3 text-muted-foreground uppercase tracking-wider">
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-3 text-muted-foreground uppercase tracking-wider">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                  />
+                </div>
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-3">
-                  Email Address
+                <label className="block text-sm font-medium mb-3 text-muted-foreground uppercase tracking-wider">
+                  Email
                 </label>
                 <input
                   type="email"
-                  id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                  placeholder="Enter your email"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-3">
-                  Message
+                <label className="block text-sm font-medium mb-3 text-muted-foreground uppercase tracking-wider">
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-3 text-muted-foreground uppercase tracking-wider">
+                  Your Message
                 </label>
                 <textarea
-                  id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none transition-colors"
-                  placeholder="Tell me about your project..."
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none transition-colors"
                 />
               </div>
 
               <Button 
                 type="submit"
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-md"
               >
-                Send Message
-                <Send className="ml-2 h-4 w-4" />
+                SEND MESSAGE
               </Button>
             </form>
           </div>
-
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div className="bg-card rounded-2xl p-8 card-shadow">
-              <h3 className="text-2xl font-semibold mb-8 flex items-center">
-                <Mail className="h-6 w-6 text-primary mr-3" />
-                Get In Touch
-              </h3>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                I'm always open to discussing new opportunities, interesting projects, 
-                or potential collaborations. Feel free to reach out through any of the channels below.
-              </p>
-
-              {/* Contact Methods */}
-              <div className="space-y-4">
-                <a 
-                  href="mailto:rajoan.antor@example.com"
-                  className="flex items-center p-4 bg-muted rounded-lg hover:bg-primary/10 transition-colors duration-200 group"
-                >
-                  <Mail className="h-5 w-5 text-primary mr-4 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium group-hover:text-primary transition-colors">Email</p>
-                    <p className="text-sm text-muted-foreground">rajoan.antor@example.com</p>
-                  </div>
-                </a>
-
-                <a 
-                  href="tel:+8801234567890"
-                  className="flex items-center p-4 bg-muted rounded-lg hover:bg-primary/10 transition-colors duration-200 group"
-                >
-                  <Phone className="h-5 w-5 text-primary mr-4 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium group-hover:text-primary transition-colors">Phone</p>
-                    <p className="text-sm text-muted-foreground">+880 123 456 7890</p>
-                  </div>
-                </a>
-
-                <div className="flex items-center p-4 bg-muted rounded-lg">
-                  <MapPin className="h-5 w-5 text-primary mr-4 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium">Location</p>
-                    <p className="text-sm text-muted-foreground">Dhaka, Bangladesh</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Links */}
-              <div className="mt-8">
-                <h4 className="font-medium mb-4">Connect on Social</h4>
-                <div className="flex space-x-4">
-                  <a 
-                    href="https://linkedin.com/in/rajoan-antor"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
-                  >
-                    <Linkedin className="h-5 w-5" />
-                  </a>
-                  <a 
-                    href="https://github.com/rajoan-antor"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
-                  >
-                    <Github className="h-5 w-5" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="mt-16 pt-8 border-t border-border text-center">
-          <p className="text-muted-foreground">
-            © 2024 Rajoan Tamjid Antor. All rights reserved. Built with ❤️ using React & Tailwind CSS.
-          </p>
         </div>
       </div>
     </section>
