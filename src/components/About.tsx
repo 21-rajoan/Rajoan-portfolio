@@ -1,117 +1,92 @@
 
-import { GraduationCap, Briefcase, MapPin, Calendar, Award, Code2, Heart } from "lucide-react";
+import { GraduationCap, Briefcase, MapPin, Calendar, Code2 } from "lucide-react";
 
 export const About = () => {
   return (
-    <section id="about" className="py-20 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-32 right-32 w-64 h-64 bg-cyan-400/10 rounded-full blur-3xl floating-element"></div>
-        <div className="absolute bottom-32 left-32 w-48 h-48 bg-purple-500/10 rounded-full blur-2xl floating-element" style={{ animationDelay: '3s' }}></div>
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <section id="about" className="section-padding bg-muted/30">
+      <div className="section-container">
         <div className="text-center mb-16">
-          <div className="glass-card inline-flex items-center gap-2 text-cyan-400 px-6 py-3 rounded-full text-sm font-medium mb-6 animate-fade-in">
-            <Code2 className="h-4 w-4" />
-            Get to know me
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-purple-100 bg-clip-text text-transparent animate-fade-in delay-200">
-            About Me
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto mb-6 animate-scale-in delay-300"></div>
-          <p className="text-white/70 max-w-2xl mx-auto text-lg leading-relaxed animate-fade-in delay-500">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Passionate about creating exceptional mobile experiences through clean code and innovative solutions
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Profile Section */}
-          <div className="text-center lg:text-left animate-fade-in delay-700">
-            <div className="glass-card rounded-3xl p-8 mb-8">
-              <div className="relative inline-block">
-                <div className="w-80 h-80 glass-card rounded-3xl p-4 shadow-2xl mx-auto">
-                  <div className="w-full h-full rounded-3xl bg-gradient-to-br from-cyan-400/20 via-blue-500/20 to-purple-500/10 flex items-center justify-center relative overflow-hidden">
-                    <div className="text-8xl font-bold bg-gradient-to-br from-cyan-400 to-purple-500 bg-clip-text text-transparent">RA</div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                  </div>
-                </div>
-                
-                {/* Floating Elements */}
-                <div className="absolute -bottom-6 -right-6 glass-card w-20 h-20 rounded-2xl flex items-center justify-center shadow-xl animate-bounce">
-                  <span className="text-2xl">💻</span>
-                </div>
-                <div className="absolute -top-4 -left-4 glass-card w-16 h-16 rounded-full flex items-center justify-center">
-                  <Award className="h-8 w-8 text-cyan-400" />
-                </div>
+          <div className="text-center">
+            <div className="bg-card rounded-2xl p-8 card-shadow">
+              <div className="w-64 h-64 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+                <div className="text-6xl font-bold text-primary">RA</div>
               </div>
+              <h3 className="text-2xl font-bold mb-4 text-gradient">
+                Passionate Flutter Developer
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                As a passionate Flutter developer, I build cross-platform mobile applications 
+                that are performant, elegant, and user-friendly. I love turning complex problems 
+                into simple, beautiful solutions.
+              </p>
             </div>
           </div>
 
           {/* Content Section */}
-          <div className="space-y-8 animate-fade-in delay-900">
-            <div className="glass-card rounded-3xl p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <Heart className="w-6 h-6 text-purple-400" />
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-                  Passionate Flutter Developer
-                </h3>
-              </div>
-              <p className="text-white/80 leading-relaxed text-lg mb-6">
-                As a passionate Flutter developer, I build cross-platform mobile applications 
-                that are performant, elegant, and user-friendly. I love turning complex problems 
-                into simple, beautiful solutions that provide exceptional user experiences.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                {["Mobile Apps", "Cross-Platform", "UI/UX Design", "Performance"].map((tag, index) => (
-                  <span 
-                    key={tag}
-                    className="glass-button px-4 py-2 text-cyan-400 rounded-full text-sm font-medium animate-fade-in"
-                    style={{ animationDelay: `${1000 + index * 100}ms` }}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-
+          <div className="space-y-6">
             {/* Education Card */}
-            <div className="glass-card rounded-3xl p-8 group hover:scale-105 transition-all duration-500">
-              <div className="flex items-start space-x-6">
-                <div className="glass-card w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <GraduationCap className="h-8 w-8 text-blue-400" />
+            <div className="bg-card rounded-2xl p-8 card-shadow">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <GraduationCap className="h-6 w-6 text-primary" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-2xl font-bold text-white mb-3">Education</h4>
-                  <p className="text-blue-400 font-semibold text-lg mb-1">B.Sc. in Computer Science & Engineering</p>
-                  <p className="text-white/80 mb-3">Daffodil International University, Dhaka</p>
-                  <div className="flex items-center text-white/60">
-                    <MapPin className="h-4 w-4 mr-2" />
-                    <span className="text-sm">Dhaka, Bangladesh</span>
+                  <h4 className="text-xl font-semibold mb-2">Education</h4>
+                  <p className="text-primary font-medium mb-1">B.Sc. in Computer Science & Engineering</p>
+                  <p className="text-muted-foreground mb-2">Daffodil International University, Dhaka</p>
+                  <div className="flex items-center text-muted-foreground text-sm">
+                    <MapPin className="h-4 w-4 mr-1" />
+                    <span>Dhaka, Bangladesh</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Experience Card */}
-            <div className="glass-card rounded-3xl p-8 group hover:scale-105 transition-all duration-500">
-              <div className="flex items-start space-x-6">
-                <div className="glass-card w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Briefcase className="h-8 w-8 text-cyan-400" />
+            <div className="bg-card rounded-2xl p-8 card-shadow">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <Briefcase className="h-6 w-6 text-primary" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-2xl font-bold text-white mb-3">Experience</h4>
-                  <p className="text-cyan-400 font-semibold text-lg mb-1">Intern Developer</p>
-                  <p className="text-white/80 mb-3">Cityscape International Ltd</p>
-                  <div className="flex items-center text-white/60 mb-4">
-                    <Calendar className="h-4 w-4 mr-2" />
-                    <span className="text-sm">Dec 2024 – Feb 2025</span>
+                  <h4 className="text-xl font-semibold mb-2">Experience</h4>
+                  <p className="text-primary font-medium mb-1">Intern Developer</p>
+                  <p className="text-muted-foreground mb-2">Cityscape International Ltd</p>
+                  <div className="flex items-center text-muted-foreground text-sm mb-3">
+                    <Calendar className="h-4 w-4 mr-1" />
+                    <span>Dec 2024 – Feb 2025</span>
                   </div>
-                  <p className="text-white/70 leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     Assisted in Flutter UI development and API integrations, 
-                    gaining hands-on experience in mobile app development and modern development practices.
+                    gaining hands-on experience in mobile app development.
                   </p>
                 </div>
+              </div>
+            </div>
+
+            {/* Skills Tags */}
+            <div className="bg-card rounded-2xl p-8 card-shadow">
+              <h4 className="text-xl font-semibold mb-4 flex items-center">
+                <Code2 className="h-5 w-5 text-primary mr-2" />
+                Core Skills
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {["Flutter", "Dart", "Firebase", "API Integration", "UI/UX Design", "Mobile Development"].map((skill) => (
+                  <span 
+                    key={skill}
+                    className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
