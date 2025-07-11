@@ -54,17 +54,17 @@ export const Portfolio = () => {
     <section id="portfolio" className="section-padding bg-muted/30">
       <div className="section-container">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
-          <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Featured Projects</h2>
+          <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed">
             Showcase of my recent projects demonstrating expertise in Flutter development and modern mobile app architecture.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {projects.map((project) => (
             <div 
               key={project.id}
-              className="bg-card rounded-2xl overflow-hidden card-shadow hover:shadow-xl transition-shadow duration-300"
+              className="bg-card rounded-2xl overflow-hidden card-shadow hover:shadow-xl transition-shadow duration-300 h-full flex flex-col"
             >
               {/* Project Header */}
               <div className="relative h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
@@ -86,13 +86,13 @@ export const Portfolio = () => {
               </div>
 
               {/* Project Content */}
-              <div className="p-6">
-                <div className="flex items-center mb-3">
-                  <Smartphone className="h-5 w-5 text-primary mr-2" />
+              <div className="p-8 flex-1 flex flex-col">
+                <div className="flex items-center mb-4">
+                  <Smartphone className="h-5 w-5 text-primary mr-2 flex-shrink-0" />
                   <h3 className="text-xl font-semibold">{project.title}</h3>
                 </div>
                 
-                <p className="text-muted-foreground mb-4 leading-relaxed">
+                <p className="text-muted-foreground mb-6 leading-relaxed flex-1">
                   {project.description}
                 </p>
 
@@ -101,7 +101,7 @@ export const Portfolio = () => {
                   {project.technologies.map((tech) => (
                     <span 
                       key={tech}
-                      className="px-2 py-1 bg-muted text-muted-foreground text-xs rounded-md"
+                      className="px-3 py-1 bg-muted text-muted-foreground text-xs rounded-md"
                     >
                       {tech}
                     </span>
@@ -109,10 +109,10 @@ export const Portfolio = () => {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-3">
+                <div className="flex gap-3 mt-auto">
                   <Button
                     size="sm"
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground flex-1"
                     onClick={() => window.open(project.demoUrl, '_blank')}
                   >
                     <ExternalLink className="h-4 w-4 mr-2" />
@@ -121,7 +121,7 @@ export const Portfolio = () => {
                   <Button
                     size="sm"
                     variant="outline"
-                    className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                    className="border-primary text-primary hover:bg-primary hover:text-primary-foreground flex-1"
                     onClick={() => window.open(project.githubUrl, '_blank')}
                   >
                     <Github className="h-4 w-4 mr-2" />
@@ -134,7 +134,7 @@ export const Portfolio = () => {
         </div>
 
         {/* View More Projects */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-16">
           <Button 
             variant="outline"
             className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3"

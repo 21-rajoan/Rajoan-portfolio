@@ -4,27 +4,27 @@ import { Button } from "@/components/ui/button";
 
 export const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 px-4 py-20">
+      <div className="max-w-7xl mx-auto w-full">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
-          <div className="space-y-8">
-            <div className="space-y-4">
+          <div className="space-y-8 text-center lg:text-left">
+            <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                 Hi, I'm{" "}
                 <span className="text-teal-600">Flutter Developer</span>
               </h1>
-              <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
+              <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 Passionate mobile app developer specializing in Flutter. I create beautiful, 
                 performant cross-platform applications that deliver exceptional user experiences.
               </p>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button 
                 size="lg" 
-                className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 View My Work
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -32,7 +32,7 @@ export const Hero = () => {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-3 rounded-lg font-medium transition-all duration-300"
+                className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-4 rounded-lg font-medium transition-all duration-300"
               >
                 <Download className="mr-2 h-5 w-5" />
                 Download Resume
@@ -40,24 +40,24 @@ export const Hero = () => {
             </div>
 
             {/* Social Links */}
-            <div className="flex space-x-6">
+            <div className="flex space-x-6 justify-center lg:justify-start pt-4">
               <a 
                 href="#" 
-                className="text-gray-600 hover:text-teal-600 transition-colors duration-300"
+                className="text-gray-600 hover:text-teal-600 transition-colors duration-300 p-2"
                 aria-label="GitHub"
               >
                 <Github className="h-6 w-6" />
               </a>
               <a 
                 href="#" 
-                className="text-gray-600 hover:text-teal-600 transition-colors duration-300"
+                className="text-gray-600 hover:text-teal-600 transition-colors duration-300 p-2"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-6 w-6" />
               </a>
               <a 
                 href="#" 
-                className="text-gray-600 hover:text-teal-600 transition-colors duration-300"
+                className="text-gray-600 hover:text-teal-600 transition-colors duration-300 p-2"
                 aria-label="Email"
               >
                 <Mail className="h-6 w-6" />
@@ -70,7 +70,7 @@ export const Hero = () => {
             <div className="relative">
               <div className="w-80 h-96 lg:w-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="/lovable-uploads/af9cc730-9df3-4684-988b-2351ef1cbb55.png"
+                  src="/lovable-uploads/6c2c9bb9-7395-40c6-a0fb-f5c9b7888e8d.png"
                   alt="Professional profile"
                   className="w-full h-full object-cover"
                 />
