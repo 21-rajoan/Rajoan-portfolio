@@ -41,7 +41,9 @@ export const Hero = () => {
                   <Github className="h-5 w-5 text-muted-foreground group-hover:text-primary-foreground" />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://www.linkedin.com/in/rajoan-tamjid-170b13249/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-12 h-12 bg-card hover:bg-primary transition-colors duration-300 rounded-lg flex items-center justify-center group"
                   aria-label="LinkedIn"
                 >
@@ -63,7 +65,7 @@ export const Hero = () => {
             {/* Main Profile Image */}
             <div className="relative z-10 w-80 h-96 lg:w-96 lg:h-[500px] rounded-2xl overflow-hidden">
               <img 
-                src="/lovable-uploads/00cae237-695b-412e-afbc-f039fd819a65.png"
+                src="/lovable-uploads/af9cc730-9df3-4684-988b-2351ef1cbb55.png"
                 alt="Professional profile"
                 className="w-full h-full object-cover"
               />
