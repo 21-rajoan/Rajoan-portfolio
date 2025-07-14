@@ -52,7 +52,7 @@ export const Hero = () => {
                   <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-primary-foreground" />
                 </a>
                 <a 
-                  href="#" 
+                  href="mailto:rajoantamjid.21@gmail.com" 
                   className="w-12 h-12 bg-card hover:bg-primary transition-colors duration-300 rounded-lg flex items-center justify-center group"
                   aria-label="Email"
                 >
