@@ -15,7 +15,7 @@ export const Hero = () => {
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
                 Hi, I'm{" "}
-                <span className="text-primary">Rajoan Tamjid</span>
+                <span className="text-primary">Rajoan</span>
               </h1>
               <h2 className="text-2xl md:text-3xl text-muted-foreground font-light">
                 a Professional Flutter Developer.
@@ -63,7 +63,7 @@ export const Hero = () => {
             {/* Main Profile Image */}
             <div className="relative z-10 w-80 h-96 lg:w-96 lg:h-[500px] rounded-2xl overflow-hidden">
               <img 
-                src="/lovable-uploads/af9cc730-9df3-4684-988b-2351ef1cbb55.png"
+                src="/lovable-uploads/00cae237-695b-412e-afbc-f039fd819a65.png"
                 alt="Professional profile"
                 className="w-full h-full object-cover"
               />
