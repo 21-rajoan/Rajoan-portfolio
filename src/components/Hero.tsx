@@ -34,7 +34,9 @@ export const Hero = () => {
               </p>
               <div className="flex space-x-4">
                 <a 
-                  href="#" 
+                  href="https://github.com/21-rajoan" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-12 h-12 bg-card hover:bg-primary transition-colors duration-300 rounded-lg flex items-center justify-center group"
                   aria-label="GitHub"
                 >
