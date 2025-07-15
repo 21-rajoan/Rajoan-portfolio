@@ -78,30 +78,46 @@ export const Hero = () => {
 
           {/* Profile Image - Right Side */}
           <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
-            {/* Main Profile Image */}
+            {/* Main Profile Image with Beautiful Frame */}
             <div className="relative z-10">
-              <div className="w-80 h-96 lg:w-96 lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
-                <img 
-                  src="/lovable-uploads/af9cc730-9df3-4684-988b-2351ef1cbb55.png"
-                  alt="Rajoan Tamjid - Professional Flutter Developer"
-                  className="w-full h-full object-cover"
-                />
+              <div className="w-64 h-80 lg:w-72 lg:h-96 relative">
+                {/* Decorative frame layers */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-accent/20 to-primary/30 rounded-2xl transform rotate-3 shadow-2xl"></div>
+                <div className="absolute inset-1 bg-gradient-to-tr from-card to-card/80 rounded-2xl transform -rotate-1 shadow-xl"></div>
+                
+                {/* Main image container */}
+                <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border-4 border-card/50 backdrop-blur-sm">
+                  <img 
+                    src="/lovable-uploads/af9cc730-9df3-4684-988b-2351ef1cbb55.png"
+                    alt="Rajoan Tamjid - Professional Flutter Developer"
+                    className="w-full h-full object-cover"
+                  />
+                  
+                  {/* Overlay gradient for professional look */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent"></div>
+                </div>
+                
+                {/* Floating decorative elements */}
+                <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary rounded-full opacity-80 blur-sm animate-pulse"></div>
+                <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-accent/50 rounded-full opacity-60 blur-md"></div>
               </div>
               
-              {/* Decorative border */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl -z-10 blur-xl opacity-50"></div>
+              {/* Subtle glow effect */}
+              <div className="absolute -inset-8 bg-gradient-to-r from-primary/10 to-accent/10 rounded-3xl -z-10 blur-2xl opacity-70"></div>
             </div>
 
-            {/* Background Elements */}
-            <div className="absolute -top-8 -right-8 -z-20 hidden lg:block">
-              <div className="grid grid-cols-3 gap-4 opacity-20">
-                {Array.from({ length: 12 }).map((_, i) => (
+            {/* Background pattern - subtle and professional */}
+            <div className="absolute -top-12 -right-12 -z-20 hidden lg:block opacity-10">
+              <div className="grid grid-cols-4 gap-3">
+                {Array.from({ length: 16 }).map((_, i) => (
                   <div 
                     key={i}
-                    className="w-16 h-16 bg-card/50 rounded-lg flex items-center justify-center backdrop-blur-sm"
-                  >
-                    <div className="w-6 h-6 bg-primary/30 rounded"></div>
-                  </div>
+                    className="w-3 h-3 bg-primary/30 rounded-sm transform rotate-45"
+                    style={{
+                      animationDelay: `${i * 0.1}s`,
+                      animation: 'pulse 3s infinite'
+                    }}
+                  ></div>
                 ))}
               </div>
             </div>
