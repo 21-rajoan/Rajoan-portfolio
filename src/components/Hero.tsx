@@ -35,9 +35,20 @@ export const Hero = () => {
                 View My Work
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button variant="outline" size="lg" className="px-8 py-3 text-base font-medium">
-                <Download className="mr-2 h-5 w-5" />
-                Download CV
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="px-8 py-3 text-base font-medium" 
+                asChild
+              >
+                <a 
+                  href="/Rajoan_Tamjid_CV.pdf" 
+                  download="Rajoan_Tamjid_CV.pdf"
+                  aria-label="Download Rajoan Tamjid's CV"
+                >
+                  <Download className="mr-2 h-5 w-5" />
+                  Download CV
+                </a>
               </Button>
             </div>
 
