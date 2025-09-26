@@ -60,11 +60,11 @@ export const Contact = () => {
               <div className="space-y-4 mb-8">
                 <div className="flex items-center">
                   <Phone className="h-5 w-5 text-primary mr-4" />
-                  <span className="text-muted-foreground">+880 123 456 7890</span>
+                  <span className="text-muted-foreground">+8801734341140</span>
                 </div>
                 <div className="flex items-center">
                   <Mail className="h-5 w-5 text-primary mr-4" />
-                  <span className="text-muted-foreground">rajoan.antor@example.com</span>
+                  <span className="text-muted-foreground">rajoantamjid.21@gmail.com</span>
                 </div>
               </div>
 
