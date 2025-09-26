@@ -31,26 +31,6 @@ export const Contact = () => {
     });
   };
 
-  const testimonials = [
-    {
-      name: "Neville A. Stanton",
-      title: "Chief Executive, Daher Corp",
-      text: "Incredible work and professional service. Highly recommended for any Flutter development needs.",
-      rating: 5
-    },
-    {
-      name: "Neville A. Stanton", 
-      title: "Chief Executive, Daher Corp",
-      text: "Amazing attention to detail and excellent communication throughout the project.",
-      rating: 5
-    },
-    {
-      name: "Neville A. Stanton",
-      title: "Chief Executive, Daher Corp", 
-      text: "Delivered exceptional results on time and exceeded our expectations completely.",
-      rating: 5
-    }
-  ];
 
   return (
     <section id="contact" className="section-padding bg-background">
@@ -103,39 +83,6 @@ export const Contact = () => {
               </div>
             </div>
 
-            {/* Testimonials */}
-            <div className="space-y-4">
-              <p className="text-sm text-muted-foreground uppercase tracking-wider">
-                What They Says
-              </p>
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="bg-card rounded-2xl p-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary font-semibold">
-                        {testimonial.name.charAt(0)}
-                      </span>
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex text-primary mb-2">
-                        {Array.from({ length: testimonial.rating }).map((_, i) => (
-                          <span key={i}>★</span>
-                        ))}
-                      </div>
-                      <p className="text-muted-foreground text-sm mb-3">
-                        {testimonial.text}
-                      </p>
-                      <p className="text-foreground font-medium text-sm">
-                        {testimonial.name}
-                      </p>
-                      <p className="text-muted-foreground text-xs">
-                        {testimonial.title}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Contact Form */}
