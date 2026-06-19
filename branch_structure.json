@@ -1,0 +1,18 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "agent-app-showcase-f36a",
+    "main",
+    "origin"
+  ],
+  "parent": {
+    "agent-app-showcase-f36a": "main",
+    "main": null,
+    "origin": "main"
+  },
+  "order": [
+    "main",
+    "agent-app-showcase-f36a",
+    "origin"
+  ]
+}
