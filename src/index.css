@@ -1,41 +1,38 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Dark Professional Design System - Updated */
-
 @layer base {
   :root {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 229 63% 5.3%; /* #050816 */
+    --foreground: 0 0% 100%; /* #FFFFFF */
 
-    --card: 217.2 32.6% 17.5%;
+    --card: 222 47% 11.2%; /* #0F172A */
     --card-foreground: 210 40% 98%;
 
-    --popover: 217.2 32.6% 17.5%;
+    --popover: 222 47% 11.2%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 340 82% 52%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 198 91% 64.1%; /* #4FC3F7 */
+    --primary-foreground: 229 63% 5.3%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 222 47% 16%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 222 47% 15%;
+    --muted-foreground: 217.2 32.6% 75%;
 
-    --accent: 340 82% 52%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 186 100% 50%; /* #00E5FF */
+    --accent-foreground: 229 63% 5.3%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 340 82% 52%;
+    --border: 222 47% 18%;
+    --input: 222 47% 18%;
+    --ring: 186 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
 }
 
@@ -43,8 +40,16 @@
   * {
     @apply border-border;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden selection:bg-accent/30 selection:text-white font-sans;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(79, 195, 247, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(0, 229, 255, 0.05) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.5) 0px, transparent 100%);
+    background-attachment: fixed;
   }
 }
 
@@ -54,14 +59,100 @@
   }
   
   .section-padding {
-    @apply py-16 lg:py-24;
+    @apply py-20 lg:py-28;
   }
   
   .card-shadow {
-    @apply shadow-lg shadow-black/20;
+    @apply shadow-2xl shadow-black/40;
   }
   
   .text-gradient {
-    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-[#4FC3F7] via-[#00E5FF] to-[#FFFFFF] bg-clip-text text-transparent;
   }
+
+  .text-gradient-alt {
+    @apply bg-gradient-to-r from-[#00E5FF] to-[#4FC3F7] bg-clip-text text-transparent;
+  }
+
+  /* Glassmorphism Styles */
+  .glass-panel {
+    @apply backdrop-blur-xl bg-[#0F172A]/70 border border-white/10;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-md bg-[#0F172A]/50 border border-white/5 hover:border-[#4FC3F7]/30 shadow-xl transition-all duration-500;
+  }
+
+  .glass-nav {
+    @apply backdrop-blur-lg bg-[#050816]/75 border-b border-white/5;
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+  }
+
+  .neon-glow-primary {
+    box-shadow: 0 0 20px rgba(79, 195, 247, 0.15);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050816;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0F172A;
+  border-radius: 5px;
+  border: 2px solid #050816;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4FC3F7;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(1deg);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-1deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 8s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
 }

@@ -1,6 +1,5 @@
-
 import { useState } from "react";
-import { Mail, Phone, Linkedin, Github, Send, MapPin, MessageCircle } from "lucide-react";
+import { Mail, Phone, Linkedin, Github, Send, MapPin, MessageSquare, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
@@ -17,8 +16,8 @@ export const Contact = () => {
     e.preventDefault();
     
     toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you soon!",
+      title: "Inquiry Sent!",
+      description: "Thank you, Rajoan will review your mobile app specifications shortly.",
     });
     
     setFormData({ name: "", email: "", subject: "", message: "" });
@@ -31,140 +30,205 @@ export const Contact = () => {
     });
   };
 
-
   return (
-    <section id="contact" className="section-padding bg-background">
-      <div className="section-container">
-        <div className="text-center mb-16">
-          <p className="text-sm text-muted-foreground uppercase tracking-wider mb-4">
-            CONTACT
+    <section id="contact" className="section-padding relative overflow-hidden bg-[#050816] border-b border-white/5">
+      {/* Background Decorative Glow */}
+      <div className="absolute bottom-[10%] left-[5%] w-[300px] h-[300px] bg-[#00E5FF]/5 rounded-full blur-[110px] pointer-events-none"></div>
+
+      <div className="section-container relative z-10">
+        
+        {/* Section Header */}
+        <div className="text-center mb-16 space-y-4">
+          <p className="text-xs sm:text-sm font-bold text-[#4FC3F7] uppercase tracking-widest">
+            INQUIRY CHANNELS
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Contact With Me</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight animate-fade-in">
+            Get In Touch
+          </h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-[#4FC3F7] to-[#00E5FF] mx-auto rounded-full"></div>
+          <p className="text-sm sm:text-base text-white/50 max-w-2xl mx-auto leading-relaxed">
+            Interested in implementing an enterprise mobile ecosystem or hiring an expert? Complete the ledger below or contact directly.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <div className="space-y-8">
-            <div className="bg-card rounded-2xl p-8">
-              <img 
-                src="/lovable-uploads/af9cc730-9df3-4684-988b-2351ef1cbb55.png"
-                alt="Profile"
-                className="w-20 h-20 rounded-lg object-cover mb-6"
-              />
-              <h3 className="text-2xl font-semibold mb-4">Rajoan Tamjid</h3>
-              <p className="text-muted-foreground mb-6">Flutter Developer</p>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                I am available for freelance work. Connect with me via and call in to my account.
-              </p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
+          
+          {/* Direct Channels Column (5 Cols) */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="bg-[#0F172A]/40 backdrop-blur-md border border-white/5 rounded-[32px] p-8 space-y-8 h-full flex flex-col justify-between">
               
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center">
-                  <Phone className="h-5 w-5 text-primary mr-4" />
-                  <span className="text-muted-foreground">+8801734341140</span>
-                </div>
-                <div className="flex items-center">
-                  <Mail className="h-5 w-5 text-primary mr-4" />
-                  <span className="text-muted-foreground">rajoantamjid.21@gmail.com</span>
-                </div>
-              </div>
-
               <div className="space-y-4">
-                <p className="text-sm text-muted-foreground uppercase tracking-wider">
-                  FIND WITH ME
+                <div className="flex items-center space-x-4">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-slate-900 to-slate-950 border border-white/10 flex items-center justify-center text-3xl">
+                    👨‍💻
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-black text-white">Rajoan Tamjid</h3>
+                    <p className="text-xs text-[#4FC3F7] font-bold uppercase tracking-wider">Flutter Architect Specialist</p>
+                  </div>
+                </div>
+
+                <p className="text-xs sm:text-sm text-white/60 leading-relaxed pt-2">
+                  Currently open for strategic freelance commissions, architectural consultations, and full-time senior-grade opportunities with visionary startups.
                 </p>
-                <div className="flex space-x-4">
-                  <a className="w-12 h-12 bg-background hover:bg-primary transition-colors duration-300 rounded-lg flex items-center justify-center group">
-                    <Github className="h-5 w-5 text-muted-foreground group-hover:text-primary-foreground" />
+              </div>
+
+              {/* Direct Channels Cards */}
+              <div className="space-y-4 pt-4 border-t border-white/5">
+                <a 
+                  href="mailto:rajoantamjid.21@gmail.com" 
+                  className="flex items-center space-x-4 p-3 rounded-2xl bg-white/5 border border-white/5 hover:border-[#4FC3F7]/30 hover:bg-white/10 transition-all duration-300"
+                >
+                  <div className="w-10 h-10 bg-[#4FC3F7]/10 rounded-xl flex items-center justify-center text-[#4FC3F7]">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-white/40 uppercase font-bold block">DIRECT EMAIL</span>
+                    <span className="text-xs sm:text-sm font-semibold text-white">rajoantamjid.21@gmail.com</span>
+                  </div>
+                </a>
+
+                <a 
+                  href="https://wa.me/8801734341140" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-4 p-3 rounded-2xl bg-white/5 border border-white/5 hover:border-[#00E5FF]/30 hover:bg-white/10 transition-all duration-300"
+                >
+                  <div className="w-10 h-10 bg-[#00E5FF]/10 rounded-xl flex items-center justify-center text-[#00E5FF]">
+                    <MessageSquare className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-white/40 uppercase font-bold block">WHATSAPP CHAT</span>
+                    <span className="text-xs sm:text-sm font-semibold text-white">+8801734341140</span>
+                  </div>
+                </a>
+
+                <div className="flex items-center space-x-4 p-3 rounded-2xl bg-white/5 border border-white/5">
+                  <div className="w-10 h-10 bg-indigo-500/10 rounded-xl flex items-center justify-center text-indigo-400">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-white/40 uppercase font-bold block">BASE LOCATION</span>
+                    <span className="text-xs sm:text-sm font-semibold text-white">Dhaka, Bangladesh</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Download Resume / Socials block */}
+              <div className="pt-6 border-t border-white/5 space-y-4">
+                <Button 
+                  className="w-full bg-gradient-to-r from-[#4FC3F7] to-[#00E5FF] text-[#050816] font-bold uppercase tracking-wider text-xs py-5 rounded-xl transition-all"
+                  asChild
+                >
+                  <a href="/Rajoan_Tamjid_CV.pdf" download="Rajoan_Tamjid_CV.pdf">
+                    <Download className="w-4.5 h-4.5 mr-2" />
+                    Download Resume CV
                   </a>
-                  <a className="w-12 h-12 bg-background hover:bg-primary transition-colors duration-300 rounded-lg flex items-center justify-center group">
-                    <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-primary-foreground" />
+                </Button>
+
+                <div className="flex justify-center space-x-4 pt-2">
+                  <a 
+                    href="https://github.com/21-rajoan" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-11 h-11 bg-white/5 border border-white/5 rounded-full flex items-center justify-center text-white/70 hover:text-white hover:border-[#4FC3F7]/50 transition-all"
+                  >
+                    <Github className="w-5 h-5" />
+                  </a>
+                  <a 
+                    href="https://www.linkedin.com/in/rajoan-tamjid-170b13249/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-11 h-11 bg-white/5 border border-white/5 rounded-full flex items-center justify-center text-white/70 hover:text-white hover:border-[#00E5FF]/50 transition-all"
+                  >
+                    <Linkedin className="w-5 h-5" />
                   </a>
                 </div>
               </div>
-            </div>
 
+            </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="bg-card rounded-2xl p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium mb-3 text-muted-foreground uppercase tracking-wider">
-                    Your Name
+          {/* Contact Inquiry Form (7 Cols) */}
+          <div className="lg:col-span-7">
+            <div className="bg-[#0F172A]/40 backdrop-blur-md border border-white/5 rounded-[32px] p-8 sm:p-10 shadow-2xl">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="block text-[10px] font-bold text-white/40 uppercase tracking-widest">
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Jane Doe"
+                      className="w-full px-4 py-3 bg-slate-950/60 border border-white/5 rounded-xl text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#00E5FF] focus:border-transparent transition-all placeholder:text-white/20"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="block text-[10px] font-bold text-white/40 uppercase tracking-widest">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="jane@company.com"
+                      className="w-full px-4 py-3 bg-slate-950/60 border border-white/5 rounded-xl text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#00E5FF] focus:border-transparent transition-all placeholder:text-white/20"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-[10px] font-bold text-white/40 uppercase tracking-widest">
+                    Subject / Topic
                   </label>
                   <input
                     type="text"
-                    name="name"
-                    value={formData.name}
+                    name="subject"
+                    value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                    placeholder="Mobile App Project Architecture Design"
+                    className="w-full px-4 py-3 bg-slate-950/60 border border-white/5 rounded-xl text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#00E5FF] focus:border-transparent transition-all placeholder:text-white/20"
                   />
                 </div>
-                <div>
-                  <label className="block text-sm font-medium mb-3 text-muted-foreground uppercase tracking-wider">
-                    Phone Number
+
+                <div className="space-y-2">
+                  <label className="block text-[10px] font-bold text-white/40 uppercase tracking-widest">
+                    Your Specifications
                   </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={5}
+                    placeholder="Describe your mobile product scope, timeline target, or technical requirements..."
+                    className="w-full px-4 py-3 bg-slate-950/60 border border-white/5 rounded-xl text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#00E5FF] focus:border-transparent transition-all placeholder:text-white/20 resize-none"
                   />
                 </div>
-              </div>
 
-              <div>
-                <label className="block text-sm font-medium mb-3 text-muted-foreground uppercase tracking-wider">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                />
-              </div>
+                <Button 
+                  type="submit"
+                  className="w-full bg-slate-950 hover:bg-slate-900 border border-white/10 hover:border-[#00E5FF]/50 text-white font-bold py-5 rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center space-x-2"
+                >
+                  <Send className="w-4 h-4 text-[#00E5FF]" />
+                  <span>Transmit Specifications</span>
+                </Button>
 
-              <div>
-                <label className="block text-sm font-medium mb-3 text-muted-foreground uppercase tracking-wider">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-3 text-muted-foreground uppercase tracking-wider">
-                  Your Message
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none transition-colors"
-                />
-              </div>
-
-              <Button 
-                type="submit"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-md"
-              >
-                SEND MESSAGE
-              </Button>
-            </form>
+              </form>
+            </div>
           </div>
+
         </div>
+
       </div>
     </section>
   );
