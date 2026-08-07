@@ -1,78 +1,48 @@
-
-import { GraduationCap, Briefcase, MapPin, Calendar, Code2, Download } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import portfolioData from "@/data/portfolioData";
+import { FadeIn } from "@/components/ui/FadeIn";
 
 export const About = () => {
   return (
-    <section id="about" className="section-padding bg-background">
-      <div className="section-container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Profile Image */}
-          <div className="order-2 lg:order-1">
-            <div className="relative">
-              <div className="w-full max-w-md mx-auto">
-                <img 
-                  src="/lovable-uploads/af9cc730-9df3-4684-988b-2351ef1cbb55.png"
-                  alt="Professional profile"
-                  className="w-full h-auto rounded-2xl"
-                />
-              </div>
-            </div>
+    <section id="about" className="py-24 relative bg-[#0A0F11]">
+      <div className="section-container relative z-10 w-full max-w-4xl mx-auto flex flex-col justify-center">
+        
+        <FadeIn delay={100}>
+          <div className="mb-8">
+            <h2 className="font-mono text-white/80 text-sm md:text-base tracking-wide mb-2">
+              about
+            </h2>
+            <div className="w-full h-px bg-[#222F35]"></div>
           </div>
+        </FadeIn>
 
-          {/* Content Section */}
-          <div className="order-1 lg:order-2 space-y-8">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">Who I Am?</h2>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                I am a mobile app developer from Dhaka with a strong focus in Flutter 
-                development. I love to get new experiences and always learn from my 
-                surroundings.
-              </p>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                I am a mobile app developer from Dhaka with a strong focus in Flutter 
-                development. I love to get new experiences and always learn from my 
-                surroundings.
-              </p>
-              
-              <Button 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-md"
-              >
-                <Download className="mr-2 h-4 w-4" />
-                DOWNLOAD CV
-              </Button>
-            </div>
+        <div className="flex flex-col items-start space-y-8">
+          <FadeIn delay={200}>
+            <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
+              Building apps people actually love.
+            </h3>
+          </FadeIn>
+          
+          <FadeIn delay={300} className="space-y-6">
+            <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed">
+              Mobile App Developer from Dhaka with a strong focus in Flutter development. 
+              I design and build cross-platform applications that prioritize clean architecture, 
+              smooth user experience, and maintainable code. My approach centers on MVVM architecture, 
+              reactive state management with GetX and RxDart, and robust backend integration through 
+              REST APIs and Firebase.
+            </p>
+            <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed">
+              Specialized in E-commerce, Streaming, Logistics, and Business apps — published and 
+              maintained 18+ apps on Google Play and the App Store.
+            </p>
+          </FadeIn>
 
-            {/* Stats or Skills */}
-            <div className="grid grid-cols-2 gap-8 pt-8">
-              <div className="bg-card rounded-2xl p-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <GraduationCap className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold mb-2">Education</h4>
-                    <p className="text-primary font-medium text-sm">B.Sc. in CSE</p>
-                    <p className="text-muted-foreground text-sm">Daffodil International University</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-card rounded-2xl p-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Briefcase className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold mb-2">Experience</h4>
-                    <p className="text-primary font-medium text-sm">Intern Developer</p>
-                    <p className="text-muted-foreground text-sm">Cityscape International Ltd</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <FadeIn delay={400} className="mt-8 w-full bg-[#11181C] border-l-4 border-[#00E59B] p-6 md:p-8 rounded-r-xl">
+            <p className="text-white text-xl sm:text-2xl font-medium leading-snug">
+              2+ years crafting mobile experiences. Now 18+ apps in the stores.
+            </p>
+          </FadeIn>
         </div>
+
       </div>
     </section>
   );

@@ -1,21 +1,23 @@
 
-import { Hero } from "@/components/Hero";
+import { Navbar } from "@/components/layout/Navbar";
+import { HeroSection } from "@/components/sections/HeroSection";
 import { About } from "@/components/About";
+import { ExperienceSection } from "@/components/sections/ExperienceSection";
+import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { Skills } from "@/components/Skills";
-import { Portfolio } from "@/components/Portfolio";
-import { Services } from "@/components/Services";
 import { Contact } from "@/components/Contact";
-import { Navigation } from "@/components/Navigation";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
-      <Navigation />
-      <Hero />
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary/20">
+      <Navbar />
+      <HeroSection />
+      
+      {/* Reordered sections based on user request */}
       <About />
+      <ExperienceSection />
       <Skills />
-      <Portfolio />
-      <Services />
+      <ProjectsSection />
       <Contact />
     </div>
   );
