@@ -38,7 +38,7 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 relative bg-background">
+    <section id="contact" className="py-16 relative bg-transparent">
       <div className="section-container">
         
         <FadeIn>

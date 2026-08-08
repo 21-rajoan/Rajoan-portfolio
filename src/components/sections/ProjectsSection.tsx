@@ -5,8 +5,8 @@ import { Search, Apple, PlayCircle, ExternalLink, List, LayoutGrid } from "lucid
 
 export const ProjectsSection = () => {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [activePlatform, setActivePlatform] = useState("All platforms");
   const [searchQuery, setSearchQuery] = useState("");
+  const [visibleCount, setVisibleCount] = useState(5);
 
   // Extract unique categories
   const categories = useMemo(() => {
@@ -14,25 +14,34 @@ export const ProjectsSection = () => {
     return ["All", ...Array.from(cats)];
   }, []);
 
-  const platforms = ["All platforms", "Android", "iOS"];
+  const handleCategoryChange = (cat: string) => {
+    setActiveCategory(cat);
+    setVisibleCount(5);
+  };
+
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query);
+    setVisibleCount(5);
+  };
 
   // Filter projects
   const filteredProjects = useMemo(() => {
     return portfolioData.projects.filter(project => {
       const matchesCategory = activeCategory === "All" || project.category === activeCategory;
-      const matchesPlatform = 
-        activePlatform === "All platforms" || 
-        project.platform.includes(activePlatform.toUpperCase());
       const matchesSearch = 
         project.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
         project.shortDescription.toLowerCase().includes(searchQuery.toLowerCase());
       
-      return matchesCategory && matchesPlatform && matchesSearch;
+      return matchesCategory && matchesSearch;
     });
-  }, [activeCategory, activePlatform, searchQuery]);
+  }, [activeCategory, searchQuery]);
+
+  const visibleProjects = useMemo(() => {
+    return filteredProjects.slice(0, visibleCount);
+  }, [filteredProjects, visibleCount]);
 
   return (
-    <section id="projects" className="pt-24 pb-24 relative bg-[#0A0F11]">
+    <section id="projects" className="py-16 relative bg-transparent">
       <div className="section-container relative z-10 w-full max-w-4xl mx-auto flex flex-col justify-center">
         
         <FadeIn>
@@ -40,10 +49,13 @@ export const ProjectsSection = () => {
             <h2 className="font-mono text-white/80 text-sm md:text-base tracking-wide mb-2">
               work
             </h2>
-            <div className="w-full h-px bg-[#222F35] mb-8"></div>
-            <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight mb-10">
+            <div className="w-full h-px bg-secondary mb-8"></div>
+            <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight mb-3">
               The Index
             </h3>
+            <p className="text-white/60 text-base md:text-lg mb-10 max-w-2xl">
+              12 Featured Case Studies — Selected production applications from 16+ live apps deployed (22+ apps built total).
+            </p>
           </div>
         </FadeIn>
 
@@ -55,11 +67,11 @@ export const ProjectsSection = () => {
               {categories.map((cat, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setActiveCategory(cat)}
+                  onClick={() => handleCategoryChange(cat)}
                   className={`px-5 py-2 rounded-full text-sm font-medium transition-colors border ${
                     activeCategory === cat 
-                      ? "bg-[#11181C] border-[#00E59B] text-[#00E59B]" 
-                      : "bg-[#11181C] border-[#222F35] text-white/70 hover:border-[#00E59B]/50"
+                      ? "bg-card border-primary text-primary" 
+                      : "bg-card border-border text-white/70 hover:border-primary/50"
                   }`}
                 >
                   {cat}
@@ -67,24 +79,7 @@ export const ProjectsSection = () => {
               ))}
             </div>
 
-            {/* Platforms */}
-            <div className="flex flex-wrap gap-3">
-              {platforms.map((plat, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActivePlatform(plat)}
-                  className={`px-5 py-2 rounded-full text-sm font-medium transition-colors border ${
-                    activePlatform === plat 
-                      ? "bg-[#11181C] border-[#00E59B] text-[#00E59B]" 
-                      : "bg-[#11181C] border-[#222F35] text-white/70 hover:border-[#00E59B]/50"
-                  }`}
-                >
-                  {plat}
-                </button>
-              ))}
-            </div>
-
-            {/* View Toggle Placeholder & Search */}
+            {/* Search */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-2">
               <div className="flex items-center gap-2 text-white/50 hidden sm:flex">
                 <List size={20} className="text-white/80" />
@@ -97,8 +92,8 @@ export const ProjectsSection = () => {
                   type="text" 
                   placeholder="Search apps..." 
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-[#11181C] border border-[#222F35] rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-white/40 focus:outline-none focus:border-[#00E59B]/50 transition-colors"
+                  onChange={(e) => handleSearchChange(e.target.value)}
+                  className="w-full bg-card border border-border rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-white/40 focus:outline-none focus:border-primary/50 transition-colors"
                 />
               </div>
             </div>
@@ -107,22 +102,25 @@ export const ProjectsSection = () => {
 
         {/* Results Counter */}
         <FadeIn delay={200} direction="up">
-          <div className="text-white/50 text-sm font-mono mb-6">
-            {filteredProjects.length} of {portfolioData.projects.length}
+          <div className="text-white/60 text-sm font-mono mb-6 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary inline-block animate-pulse"></span>
+              Showing {visibleProjects.length} of {filteredProjects.length} filtered apps (22+ built, 16+ deployed)
+            </div>
           </div>
         </FadeIn>
 
         {/* Project List */}
         <div className="flex flex-col space-y-6">
-          {filteredProjects.map((project, idx) => {
+          {visibleProjects.map((project, idx) => {
             const displayNumber = String(idx + 1).padStart(2, '0');
             
             // Derive generic letter for icon
             const letterIcon = project.title.charAt(0).toUpperCase();
 
             return (
-              <FadeIn key={idx} delay={idx * 50} direction="up">
-                <div className="bg-[#11181C] border border-[#222F35] rounded-3xl p-6 md:p-8 hover:border-[#00E59B]/30 transition-colors relative group">
+              <FadeIn key={project.id || idx} delay={50} direction="up">
+                <div className="bg-card border border-border rounded-3xl p-6 md:p-8 hover:border-primary/30 transition-colors relative group">
                   
                   {/* Number tag */}
                   <span className="absolute top-6 right-6 font-mono text-white/30 text-xs">
@@ -131,7 +129,7 @@ export const ProjectsSection = () => {
 
                   <div className="flex items-start gap-6 mb-6">
                     {/* App Icon Placeholder */}
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-[#222F35] to-[#11181C] border border-[#222F35] flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-105 transition-transform overflow-hidden">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-[#222F35] to-[#11181C] border border-border flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-105 transition-transform overflow-hidden">
                       {project.image ? (
                         <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
                       ) : (
@@ -140,7 +138,7 @@ export const ProjectsSection = () => {
                     </div>
 
                     <div className="flex-grow pt-1 sm:pt-2">
-                      <h4 className="text-2xl sm:text-3xl font-bold text-white mb-1 group-hover:text-[#00E59B] transition-colors">
+                      <h4 className="text-2xl sm:text-3xl font-bold text-white mb-1 group-hover:text-primary transition-colors">
                         {project.title.split(" — ")[0]}
                       </h4>
                       <span className="text-[#F0803C] text-sm font-medium tracking-wide">
@@ -158,7 +156,7 @@ export const ProjectsSection = () => {
                     {project.platform.map((plat, pIdx) => (
                       <span 
                         key={pIdx}
-                        className="px-3 py-1.5 rounded-lg bg-[#222F35]/50 border border-[#222F35] text-white/80 text-xs font-medium"
+                        className="px-3 py-1.5 rounded-lg bg-secondary/50 border border-border text-white/80 text-xs font-medium"
                       >
                         {plat === 'ANDROID' ? 'Android' : plat === 'IOS' ? 'iOS' : plat === 'ANDROID TV' ? 'Android TV' : plat}
                       </span>
@@ -168,20 +166,20 @@ export const ProjectsSection = () => {
                   {/* Store Buttons */}
                   <div className="flex flex-wrap gap-3">
                     {project.platform.includes('IOS') && (
-                      <a href={project.appStoreUrl || project.liveUrl || "#"} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#222F35]/30 border border-[#222F35] text-white/90 text-sm font-medium hover:bg-[#222F35] hover:text-white transition-colors group/btn">
+                      <a href={project.appStoreUrl || project.liveUrl || "#"} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-secondary/30 border border-border text-white/90 text-sm font-medium hover:bg-secondary hover:text-white transition-colors group/btn">
                         <Apple size={16} className="opacity-70 group-hover/btn:opacity-100" />
                         App Store
                       </a>
                     )}
                     {(project.platform.includes('ANDROID') || project.platform.includes('ANDROID TV')) && (
-                      <a href={project.playStoreUrl || project.liveUrl || "#"} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#222F35]/30 border border-[#222F35] text-white/90 text-sm font-medium hover:bg-[#222F35] hover:text-white transition-colors group/btn">
-                        <PlayCircle size={16} className="opacity-70 group-hover/btn:opacity-100 text-[#00E59B]" />
+                      <a href={project.playStoreUrl || project.liveUrl || "#"} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-secondary/30 border border-border text-white/90 text-sm font-medium hover:bg-secondary hover:text-white transition-colors group/btn">
+                        <PlayCircle size={16} className="opacity-70 group-hover/btn:opacity-100 text-primary" />
                         Google Play
                       </a>
                     )}
                     {/* Fallback button if neither is explicitly defined */}
                     {!project.platform.includes('IOS') && !project.platform.includes('ANDROID') && !project.platform.includes('ANDROID TV') && (
-                      <a href={project.liveUrl || "#"} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#222F35]/30 border border-[#222F35] text-white/90 text-sm font-medium hover:bg-[#222F35] hover:text-white transition-colors group/btn">
+                      <a href={project.liveUrl || "#"} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-secondary/30 border border-border text-white/90 text-sm font-medium hover:bg-secondary hover:text-white transition-colors group/btn">
                         <ExternalLink size={16} className="opacity-70 group-hover/btn:opacity-100" />
                         View Live
                       </a>
@@ -192,6 +190,18 @@ export const ProjectsSection = () => {
               </FadeIn>
             );
           })}
+
+          {/* Load More Button */}
+          {filteredProjects.length > visibleCount && (
+            <div className="flex justify-center pt-8">
+              <button
+                onClick={() => setVisibleCount(prev => prev + 5)}
+                className="px-8 py-4 rounded-2xl bg-card border border-primary/50 text-primary font-semibold text-base hover:bg-primary hover:text-[#0A0F11] transition-all duration-300 shadow-xl group flex items-center gap-3 cursor-pointer"
+              >
+                <span>Load More Projects ({filteredProjects.length - visibleCount} remaining)</span>
+              </button>
+            </div>
+          )}
           
           {filteredProjects.length === 0 && (
             <div className="text-center py-12 text-white/50">

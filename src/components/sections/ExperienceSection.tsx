@@ -11,7 +11,7 @@ export const ExperienceSection = () => {
   };
 
   return (
-    <section id="experience" className="pt-24 pb-12 relative bg-[#0A0F11]">
+    <section id="experience" className="py-16 relative bg-transparent">
       <div className="section-container relative z-10 w-full max-w-4xl mx-auto flex flex-col justify-center">
         
         <FadeIn>
@@ -19,7 +19,7 @@ export const ExperienceSection = () => {
             <h2 className="font-mono text-white/80 text-sm md:text-base tracking-wide mb-2">
               career.log
             </h2>
-            <div className="w-full h-px bg-[#222F35]"></div>
+            <div className="w-full h-px bg-secondary"></div>
           </div>
         </FadeIn>
 
@@ -29,7 +29,7 @@ export const ExperienceSection = () => {
             
             return (
               <FadeIn key={idx} delay={idx * 100}>
-                <div className="border-b border-[#222F35]/50 pb-4">
+                <div className="border-b border-border/50 pb-4">
                   {/* Clickable Header */}
                   <button 
                     onClick={() => toggleExpand(idx)}
@@ -37,9 +37,9 @@ export const ExperienceSection = () => {
                   >
                     <ChevronRight 
                       size={18} 
-                      className={`text-[#00E59B] transition-transform duration-300 flex-shrink-0 ${isExpanded ? 'rotate-90' : ''}`} 
+                      className={`text-primary transition-transform duration-300 flex-shrink-0 ${isExpanded ? 'rotate-90' : ''}`} 
                     />
-                    <span className="font-mono text-white/90 text-sm sm:text-base group-hover:text-[#00E59B] transition-colors truncate">
+                    <span className="font-mono text-white/90 text-sm sm:text-base group-hover:text-primary transition-colors truncate">
                       {job.company} — {job.period}
                     </span>
                   </button>
@@ -62,7 +62,7 @@ export const ExperienceSection = () => {
                       <ul className="space-y-3 mb-6">
                         {job.responsibilities.map((task, taskIdx) => (
                           <li key={taskIdx} className="text-muted-foreground/90 flex items-start gap-3 text-sm md:text-base">
-                            <CheckCircle2 size={16} className="text-[#00E59B] opacity-70 mt-0.5 flex-shrink-0" />
+                            <CheckCircle2 size={16} className="text-primary opacity-70 mt-0.5 flex-shrink-0" />
                             <span className="leading-relaxed">{task}</span>
                           </li>
                         ))}
@@ -72,7 +72,7 @@ export const ExperienceSection = () => {
                         {job.technologies.map((tech, techIdx) => (
                           <span 
                             key={techIdx}
-                            className="px-2.5 py-1 rounded-md bg-[#11181C] border border-[#222F35] text-[11px] font-mono text-white/70"
+                            className="px-2.5 py-1 rounded-md bg-card border border-border text-[11px] font-mono text-white/70"
                           >
                             {tech}
                           </span>

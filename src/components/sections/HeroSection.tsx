@@ -5,7 +5,7 @@ import portfolioData from "@/data/portfolioData";
 
 export const HeroSection = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-[#0A0F11]">
+    <section id="home" className="relative min-h-screen flex items-center py-16 overflow-hidden bg-transparent">
       {/* Background ambient glow */}
       <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[150px] pointer-events-none" />
@@ -80,33 +80,35 @@ export const HeroSection = () => {
           {/* Right Column: Profile Card */}
           <div className="lg:col-span-5 relative w-full max-w-md mx-auto lg:ml-auto lg:mr-0 animate-fade-in-up" style={{ animationDelay: "150ms" }}>
             
-            <div className="bg-[#11181C]/80 backdrop-blur-md border border-border/50 rounded-3xl p-8 flex flex-col items-center text-center shadow-2xl relative overflow-hidden">
+            <div className="bg-card/80 backdrop-blur-md border border-border/50 rounded-3xl p-8 flex flex-col items-center text-center shadow-2xl relative overflow-hidden">
               {/* Subtle top gradient */}
               <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
               
               {/* Profile Image */}
-              <div className="relative w-32 h-32 mb-6">
-                <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl"></div>
-                <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-primary/50 bg-[#222F35]">
+              <div className="relative w-32 h-32 sm:w-36 sm:h-36 mb-6 group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary/40 to-[#00E59B]/40 rounded-2xl blur-md opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-primary/60 bg-secondary shadow-xl">
                   <img 
                     src={portfolioData.personal.avatarUrl} 
                     alt={portfolioData.personal.name} 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 {/* Active indicator */}
-                <div className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-background rounded-full"></div>
+                <div className="absolute -bottom-1.5 -right-1.5 w-5 h-5 bg-green-500 border-2 border-[#11181C] rounded-full flex items-center justify-center shadow-lg" title="Available for roles">
+                  <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                </div>
               </div>
               
               <h3 className="text-2xl font-bold text-white mb-2">{portfolioData.personal.name}</h3>
               <p className="text-[11px] font-bold tracking-widest text-primary uppercase mb-8">
-                {portfolioData.skillCategories[1].skills.slice(0, 3).join(" • ")}
+                MOBILE APP DEVELOPER • IOS & ANDROID
               </p>
               
               {/* Skills pills */}
               <div className="flex flex-wrap justify-center gap-2 mb-8">
-                {portfolioData.skillCategories[0].skills.slice(0, 4).map((skill) => (
-                  <span key={skill} className="px-4 py-1.5 rounded-full bg-background/50 border border-border text-xs text-muted-foreground">
+                {["Flutter", "Swift", "Kotlin", "Clean Architecture"].map((skill) => (
+                  <span key={skill} className="px-4 py-1.5 rounded-full bg-background/50 border border-border text-xs text-muted-foreground font-medium">
                     {skill}
                   </span>
                 ))}
