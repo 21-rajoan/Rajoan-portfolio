@@ -66,6 +66,20 @@ export interface Stats {
   value: string;
 }
 
+export interface ShowcaseItem {
+  id: string;
+  title: string;
+  category: string;
+  subtitle: string;
+  description: string;
+  image?: string;
+  images?: string[];
+  imageLabels?: string[];
+  bgColor?: string;
+  appStoreUrl?: string;
+  playStoreUrl?: string;
+}
+
 export interface PortfolioData {
   personal: {
     name: string;
@@ -88,6 +102,7 @@ export interface PortfolioData {
   experience: Experience[];
   education: Education[];
   projects: Project[];
+  featuredShowcase?: ShowcaseItem[];
   services: Service[];
   navItems: { name: string; href: string }[];
 }
@@ -390,6 +405,107 @@ const portfolioData: PortfolioData = {
       appStoreUrl: "https://apps.apple.com/us/app/bingeboss/id6758284339",
       image: "/bingeboss-logo.png",
     },
+  ],
+
+  featuredShowcase: [
+    {
+      id: "nutriprime-showcase",
+      title: "Nutriprime",
+      category: "Health & Wellness",
+      subtitle: "Nutrition & Patient Care Platform",
+      description: "A comprehensive health & wellness marketplace connecting nutritionists with patients. Features meal & recipe management, progress tracking, and dietary plan creation.",
+      image: "/showcase/nutriprime/nutriprime-1.png",
+      images: [
+        "/showcase/nutriprime/nutriprime-1.png",
+        "/showcase/nutriprime/nutriprime-2.png",
+        "/showcase/nutriprime/nutriprime-3.png",
+        "/showcase/nutriprime/nutriprime-4.png",
+        "/showcase/nutriprime/nutriprime-5.png",
+      ],
+      imageLabels: [
+        "Welcome Screen",
+        "Home Dashboard",
+        "Meal Plan",
+        "Appointments",
+        "Progress Photos",
+      ],
+      bgColor: "from-emerald-900/40 via-teal-950/60 to-[#0B1015]",
+      appStoreUrl: "https://apps.apple.com/us/app/nutriprime/id6760328526",
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.nutriprime.app",
+    },
+    {
+      id: "bp-fitness-showcase",
+      title: "BP Fitness",
+      category: "Health & Fitness",
+      subtitle: "Workouts & AI Meal Planning",
+      description: "A results-driven fitness app with guided workouts, structured training plans, AI-powered meal planning, and in-app subscriptions.",
+      image: "/bp-fitness-logo.png",
+      images: [
+        "/showcase/bp-fitness/bp-fitness-1.png",
+        "/showcase/bp-fitness/bp-fitness-2.png",
+        "/showcase/bp-fitness/bp-fitness-3.png",
+        "/showcase/bp-fitness/bp-fitness-4.png",
+        "/showcase/bp-fitness/bp-fitness-5.png",
+      ],
+      imageLabels: [
+        "Your Fitness Hub",
+        "Measure Your Progress",
+        "Eat Smarter, Perform Better",
+        "Join the Community",
+        "Expert Workout Library",
+      ],
+      bgColor: "from-amber-900/40 via-slate-950/60 to-[#0B1015]",
+      appStoreUrl: "https://apps.apple.com/us/app/bpfitnes/id6757735124",
+    },
+    {
+      id: "castors-showcase",
+      title: "CASTORS",
+      category: "Food & Culinary AI",
+      subtitle: "Smart AI Recipe & Meal Planner",
+      description: "AI-driven culinary app that helps users cook with ingredients they have on hand, generating daily meal plans and step-by-step recipes.",
+      image: "/castors-logo.png",
+      images: [
+        "/showcase/castors/castors-1.png",
+        "/showcase/castors/castors-2.png",
+        "/showcase/castors/castors-3.png",
+        "/showcase/castors/castors-4.png",
+        "/showcase/castors/castors-5.png",
+      ],
+      imageLabels: [
+        "AI-Driven Smart Meal Planning",
+        "Personalized Daily Recommendations",
+        "AI-Powered Recipe Curator",
+        "Cook Smarter with CASTORS",
+        "Smart Meal Planning",
+      ],
+      bgColor: "from-amber-900/40 via-orange-950/60 to-[#0B1015]",
+      appStoreUrl: "https://apps.apple.com/us/app/castors/id6760685124",
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.victoria.castors",
+    },
+    {
+      id: "registree-showcase",
+      title: "Registree",
+      category: "Lifestyle & Shopping",
+      subtitle: "Baby Products & Registry App",
+      description: "A trusted baby product registry & shopping platform featuring instant QR/barcode scanner, ingredient safety lookup, custom baby registries, and expert care guides.",
+      image: "/registree-logo.png",
+      images: [
+        "/showcase/registree/registree-1.png",
+        "/showcase/registree/registree-2.png",
+        "/showcase/registree/registree-3.png",
+        "/showcase/registree/registree-4.png",
+        "/showcase/registree/registree-5.png",
+      ],
+      imageLabels: [
+        "Search & Registry Products",
+        "Item Safety & Ingredients Details",
+        "Share Registry QR Code",
+        "Ingredient Risk Analyzer",
+        "Parenting Care Guides",
+      ],
+      bgColor: "from-teal-900/40 via-emerald-950/60 to-[#0B1015]",
+      appStoreUrl: "https://apps.apple.com/us/app/registree-app/id6757942914",
+    }
   ],
 
   services: [

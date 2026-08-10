@@ -6,7 +6,6 @@ import { Search, Apple, PlayCircle, ExternalLink, List, LayoutGrid } from "lucid
 export const ProjectsSection = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [visibleCount, setVisibleCount] = useState(5);
 
   // Extract unique categories
   const categories = useMemo(() => {
@@ -16,12 +15,10 @@ export const ProjectsSection = () => {
 
   const handleCategoryChange = (cat: string) => {
     setActiveCategory(cat);
-    setVisibleCount(5);
   };
 
   const handleSearchChange = (query: string) => {
     setSearchQuery(query);
-    setVisibleCount(5);
   };
 
   // Filter projects
@@ -35,10 +32,6 @@ export const ProjectsSection = () => {
       return matchesCategory && matchesSearch;
     });
   }, [activeCategory, searchQuery]);
-
-  const visibleProjects = useMemo(() => {
-    return filteredProjects.slice(0, visibleCount);
-  }, [filteredProjects, visibleCount]);
 
   return (
     <section id="projects" className="py-16 relative bg-transparent">
@@ -105,14 +98,14 @@ export const ProjectsSection = () => {
           <div className="text-white/60 text-sm font-mono mb-6 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-primary inline-block animate-pulse"></span>
-              Showing {visibleProjects.length} of {filteredProjects.length} filtered apps (22+ built, 16+ deployed)
+              Showing {filteredProjects.length} filtered apps (22+ built, 16+ deployed)
             </div>
           </div>
         </FadeIn>
 
         {/* Project List */}
         <div className="flex flex-col space-y-6">
-          {visibleProjects.map((project, idx) => {
+          {filteredProjects.map((project, idx) => {
             const displayNumber = String(idx + 1).padStart(2, '0');
             
             // Derive generic letter for icon
@@ -190,18 +183,6 @@ export const ProjectsSection = () => {
               </FadeIn>
             );
           })}
-
-          {/* Load More Button */}
-          {filteredProjects.length > visibleCount && (
-            <div className="flex justify-center pt-8">
-              <button
-                onClick={() => setVisibleCount(prev => prev + 5)}
-                className="px-8 py-4 rounded-2xl bg-card border border-primary/50 text-primary font-semibold text-base hover:bg-primary hover:text-[#0A0F11] transition-all duration-300 shadow-xl group flex items-center gap-3 cursor-pointer"
-              >
-                <span>Load More Projects ({filteredProjects.length - visibleCount} remaining)</span>
-              </button>
-            </div>
-          )}
           
           {filteredProjects.length === 0 && (
             <div className="text-center py-12 text-white/50">
