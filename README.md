@@ -1,73 +1,39 @@
-# Welcome to your Lovable project
+# Rajoan Tamjid Antor — Portfolio
 
-## Project info
+This repository contains the source code for Rajoan Tamjid Antor's professional portfolio site.
 
-**URL**: https://lovable.dev/projects/acb7d6cf-25eb-4606-8888-6bbdb384557f
+**Live site (production):** https://antor-portfolio-glow.vercel.app/
 
-## How can I edit this code?
+Development
+-----------
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/acb7d6cf-25eb-4606-8888-6bbdb384557f) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+To run the project locally:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+git clone git@github.com:21-rajoan/Rajoan-portfolio.git
+cd Rajoan-portfolio
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Build for production:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```sh
+npm run build
+npm run preview
+```
 
-**Use GitHub Codespaces**
+Deployment
+----------
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+This project can be deployed to Vercel or Netlify. Pushing to the connected Git branch will trigger an automatic deployment if you have CI/CD set up.
 
-## What technologies are used for this project?
+If you use Vercel (recommended for this repo), make sure your Vercel project is linked to this GitHub repository and the correct branch (`main`) is selected. Trigger a redeploy from the Vercel dashboard if you do not see your latest changes.
 
-This project is built with:
+Notes
+-----
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- The repo was previously edited using a third-party tool; that integration has been removed and assets replaced.
+- If you still see an old favicon or icon in the browser, do a hard refresh or clear cache. Netlify/Vercel may serve cached assets until a fresh deploy completes.
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/acb7d6cf-25eb-4606-8888-6bbdb384557f) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Need help deploying or confirming the live site? Tell me and I can trigger a redeploy (you can provide a Vercel token+site ID) or walk you through the dashboard steps.
