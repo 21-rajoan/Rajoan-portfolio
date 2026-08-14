@@ -2,7 +2,7 @@
 
 This repository contains the source code for Rajoan Tamjid Antor's professional portfolio site.
 
-**Live site (production):** https://antor-portfolio-glow.vercel.app/
+**Live site (production):** https://rajoan_tamjid-protfolio.vercel.app/
 
 Development
 -----------
