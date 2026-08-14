@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-background px-4 py-20">
+    <section className="min-h-[70vh] sm:min-h-screen flex items-center justify-center bg-background px-4 py-12 sm:py-20">
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Text Content - Left Side */}
@@ -91,7 +91,7 @@ export const Hero = () => {
           <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
             {/* Main Profile Image with Beautiful Frame */}
             <div className="relative z-10">
-              <div className="w-64 h-80 lg:w-72 lg:h-96 relative">
+              <div className="w-44 h-56 sm:w-56 sm:h-72 md:w-64 md:h-80 lg:w-72 lg:h-96 relative">
                 {/* Decorative frame layers */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-accent/20 to-primary/30 rounded-2xl transform rotate-3 shadow-2xl"></div>
                 <div className="absolute inset-1 bg-gradient-to-tr from-card to-card/80 rounded-2xl transform -rotate-1 shadow-xl"></div>
@@ -99,7 +99,7 @@ export const Hero = () => {
                 {/* Main image container */}
                 <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border-4 border-card/50 backdrop-blur-sm">
                   <img 
-                    src="/lovable-uploads/af9cc730-9df3-4684-988b-2351ef1cbb55.png"
+                    src="/workspace-developer.jpg"
                     alt="Rajoan Tamjid - Professional Flutter Developer"
                     className="w-full h-full object-cover"
                   />

@@ -116,7 +116,7 @@
   }
 
   .section-padding {
-    @apply py-20 lg:py-28;
+    @apply py-12 sm:py-16 lg:py-28;
   }
 
   /* Typography */
@@ -221,6 +221,28 @@
     color: hsl(var(--primary));
   }
 }
+
+/* Professional project typography */
+.project-title {
+  @apply text-2xl sm:text-3xl font-semibold tracking-tight text-white leading-tight;
+}
+.project-category {
+  @apply inline-block text-sm font-medium text-[#F0803C] tracking-wide uppercase;
+  letter-spacing: 0.06em;
+}
+.project-desc {
+  @apply text-base sm:text-lg text-white/70 leading-relaxed max-w-full;
+}
+.project-badge {
+  @apply px-3 py-1.5 rounded-lg bg-secondary/50 border border-border text-white/80 text-xs font-medium;
+}
+.project-actions a {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-border bg-secondary/30 text-white/90 text-sm font-medium transition-colors;
+}
+.project-actions a:hover {
+  @apply bg-secondary text-white;
+}
+
 
 /* Fade-in animation for scroll reveals */
 @keyframes fadeInUp {

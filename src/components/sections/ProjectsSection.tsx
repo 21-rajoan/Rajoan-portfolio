@@ -131,16 +131,16 @@ export const ProjectsSection = () => {
                     </div>
 
                     <div className="flex-grow pt-1 sm:pt-2">
-                      <h4 className="text-2xl sm:text-3xl font-bold text-white mb-1 group-hover:text-primary transition-colors">
+                      <h4 className="project-title group-hover:text-primary transition-colors mb-1">
                         {project.title.split(" — ")[0]}
                       </h4>
-                      <span className="text-[#F0803C] text-sm font-medium tracking-wide">
+                      <span className="project-category">
                         {project.category}
                       </span>
                     </div>
                   </div>
 
-                  <p className="text-white/70 text-base sm:text-lg mb-6 max-w-2xl">
+                  <p className="project-desc mb-6">
                     {project.shortDescription}
                   </p>
 
@@ -149,7 +149,7 @@ export const ProjectsSection = () => {
                     {project.platform.map((plat, pIdx) => (
                       <span 
                         key={pIdx}
-                        className="px-3 py-1.5 rounded-lg bg-secondary/50 border border-border text-white/80 text-xs font-medium"
+                        className="project-badge"
                       >
                         {plat === 'ANDROID' ? 'Android' : plat === 'IOS' ? 'iOS' : plat === 'ANDROID TV' ? 'Android TV' : plat}
                       </span>
@@ -157,7 +157,7 @@ export const ProjectsSection = () => {
                   </div>
 
                   {/* Store Buttons */}
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-3 project-actions">
                     {project.platform.includes('IOS') && (
                       <a href={project.appStoreUrl || project.liveUrl || "#"} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-secondary/30 border border-border text-white/90 text-sm font-medium hover:bg-secondary hover:text-white transition-colors group/btn">
                         <Apple size={16} className="opacity-70 group-hover/btn:opacity-100" />
