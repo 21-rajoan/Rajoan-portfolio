@@ -3,7 +3,7 @@ import { FadeIn } from "@/components/ui/FadeIn";
 
 export const About = () => {
   return (
-    <section id="about" className="py-16 relative bg-transparent">
+    <section id="about" className="py-12 md:py-16 relative bg-transparent">
       <div className="section-container relative z-10 w-full max-w-4xl mx-auto flex flex-col justify-center">
 
         <FadeIn delay={100}>
@@ -17,8 +17,8 @@ export const About = () => {
 
         <div className="flex flex-col items-start space-y-8">
           <FadeIn delay={200}>
-            <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
-              Building apps people actually love.
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+              Engineering robust mobile solutions from concept to scale.
             </h3>
           </FadeIn>
 

@@ -2,7 +2,7 @@
 
 This repository contains the source code for Rajoan Tamjid Antor's professional portfolio site.
 
-**Live site (production):** (will be deployed to Netlify) — update this URL after your Netlify deploy.
+**Live site (production):** [https://rajoan-portfolio.netlify.app](https://rajoan-portfolio.netlify.app)
 
 Development
 -----------

@@ -5,12 +5,12 @@ import portfolioData from "@/data/portfolioData";
 
 export const HeroSection = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center py-16 overflow-hidden bg-transparent">
+    <section id="home" className="relative pt-24 pb-10 sm:pt-28 sm:pb-12 lg:pt-32 lg:pb-14 overflow-hidden bg-transparent">
       {/* Background ambient glow */}
       <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="section-container relative z-10 w-full flex flex-col justify-center h-full">
+      <div className="section-container relative z-10 w-full flex flex-col justify-center">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Left Column: Intro & CTA */}
@@ -58,7 +58,7 @@ export const HeroSection = () => {
             </div>
 
             {/* Stats Row */}
-            <div className="w-full pt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="w-full pt-10 sm:pt-12 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
               {portfolioData.personal.stats.map((stat, idx) => {
                 const numValue = parseInt(stat.value.replace(/[^0-9]/g, ''), 10);
                 const suffix = stat.value.replace(/[0-9]/g, '');
