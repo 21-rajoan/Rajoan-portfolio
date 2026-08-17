@@ -23,22 +23,16 @@ export const About = () => {
           </FadeIn>
 
           <FadeIn delay={300} className="space-y-6">
-            <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed">
-              Mobile App Developer from Dhaka with a strong focus in Flutter development.
-              I design and build cross-platform applications that prioritize clean architecture,
-              smooth user experience, and maintainable code. My approach centers on MVVM architecture,
-              reactive state management with GetX and RxDart, and robust backend integration through
-              REST APIs and Firebase.
-            </p>
-            <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed">
-              Specialized in E-commerce, AI Platforms, Streaming, Health, Events, Logistics, and Business apps — built 22+ projects with
-              16+ live apps published and maintained on Google Play and the App Store.
-            </p>
+            {portfolioData.personal.bio.map((paragraph, idx) => (
+              <p key={idx} className="text-muted-foreground text-lg sm:text-xl leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
           </FadeIn>
 
           <FadeIn delay={400} className="mt-8 w-full bg-card/90 backdrop-blur-md border border-border border-l-4 border-l-[#00E59B] p-6 md:p-8 rounded-r-2xl shadow-xl">
             <p className="text-white text-xl sm:text-2xl font-medium leading-snug">
-              2+ years crafting mobile experiences. 22+ apps built & 16+ deployed to global stores.
+              2+ years crafting production mobile experiences • 22+ apps built &amp; 16+ deployed across App Store &amp; Google Play.
             </p>
           </FadeIn>
         </div>

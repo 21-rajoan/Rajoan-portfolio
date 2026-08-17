@@ -80,6 +80,12 @@ export interface ShowcaseItem {
   playStoreUrl?: string;
 }
 
+export interface Achievement {
+  title: string;
+  description: string;
+  icon?: string;
+}
+
 export interface PortfolioData {
   personal: {
     name: string;
@@ -101,6 +107,7 @@ export interface PortfolioData {
   skillCategories: SkillCategory[];
   experience: Experience[];
   education: Education[];
+  achievements?: Achievement[];
   projects: Project[];
   featuredShowcase?: ShowcaseItem[];
   services: Service[];
@@ -118,22 +125,22 @@ const portfolioData: PortfolioData = {
     lastName: "Tamjid Antor",
     role: "Mobile Application Developer",
     tagline: "Building apps people actually love.",
-    subTagline: "Flutter • Swift • Kotlin — 2+ years crafting production mobile apps. From real-time WebSockets & WebRTC to AI-powered platforms and live-streaming TV. 16+ live apps on Google Play & App Store.",
+    subTagline: "Flutter • Swift • Kotlin — 2+ years crafting production mobile apps. Built 22+ mobile apps, 16+ deployed & maintained across Google Play and Apple App Store. Strong focus on Clean Architecture, WebSockets, WebRTC, AI integration, and payments.",
     bio: [
-      "I'm a mobile application developer from Dhaka with a focused expertise in Flutter development. I design and build cross-platform applications that prioritize clean architecture, smooth user experience, and maintainable code.",
-      "My approach centers on MVVM architecture, reactive state management with GetX and RxDart, and robust backend integration through REST APIs and Firebase.",
+      "Mobile Application Developer with 2+ years of experience building and maintaining production mobile applications for iOS and Android. Built 22+ mobile applications and contributed to 16+ applications deployed and maintained on Google Play and the Apple App Store.",
+      "Strong focus on Flutter, Clean Architecture, scalable application design, API integration, real-time features, payments, subscriptions, and AI integrations across e-commerce, health & wellness, food & marketplace, automotive, education, and finance domains.",
     ],
     email: "rajoantamjid.21@gmail.com",
     phone: "+8801734341140",
     location: "Dhaka, Bangladesh",
     yearsOfExperience: "2+",
-    resumeUrl: "/Rajoan_Tamjid_CV.pdf",
+    resumeUrl: "/resume",
     avatarUrl: "/workspace-developer.jpg",
     stats: [
       { value: "22+", label: "APPS BUILT" },
       { value: "16+", label: "APPS DEPLOYED" },
       { value: "2+", label: "YEARS XP" },
-      { value: "100%", label: "PAYMENT SUCCESS" },
+      { value: "30%", label: "PERF BOOST" },
     ]
   },
 
@@ -166,91 +173,125 @@ const portfolioData: PortfolioData = {
   skillCategories: [
     {
       title: "Languages",
-      skills: ["Flutter", "Dart", "Swift", "Kotlin", "Java", "JavaScript", "TypeScript", "HTML5", "CSS3", "C++"],
+      skills: ["Dart", "Swift", "Kotlin", "Java", "JS/TS", "C++"],
     },
     {
       title: "State Management",
-      skills: ["BLoC / Cubit", "Provider", "Freezed", "GetX", "Riverpod"],
+      skills: ["GetX", "DartRX", "Provider", "Riverpod", "BLoC / Cubit"],
     },
     {
       title: "Architecture & Quality",
-      skills: ["Clean Architecture", "SOLID", "OOP", "Offline-first", "TDD", "Unit Testing", "MVVM"],
+      skills: ["Clean Architecture", "MVVM", "SOLID", "TDD", "Unit Testing", "Responsive UI"],
     },
     {
-      title: "Backend & APIs",
-      skills: ["RESTful APIs", "GraphQL", "Firebase", "WebSockets", "Google Maps", "Node.js", "Express.js"],
+      title: "Backend & Realtime",
+      skills: ["REST APIs", "GraphQL", "Firebase", "WebSockets", "WebRTC", "Google Maps"],
     },
     {
       title: "Databases",
       skills: ["MongoDB", "MySQL", "PostgreSQL", "SQLite", "Hive"],
     },
     {
-      title: "Realtime & Features",
-      skills: ["Live Tracking", "Live Chat", "Push Notifications", "Payments", "Subscriptions", "Stripe Payment", "Apple Pay", "Google Pay", "WebRTC"],
+      title: "Payments & Subscriptions",
+      skills: ["Stripe", "Culqi", "Apple Pay", "Google Pay", "RevenueCat", "In-App Purchases"],
     },
     {
-      title: "Tooling & Design",
-      skills: ["Git", "GitHub", "CI/CD", "Shorebird (Code Push OTA)", "Linear", "Trello", "Figma", "Postman"],
+      title: "Tools & DevOps",
+      skills: ["Git", "CI/CD", "Shorebird OTA", "Figma", "Postman", "App Store Connect", "Google Play Console"],
     },
     {
-      title: "Craft",
-      skills: ["Responsive UI", "Animations", "Localization / RTL", "AI Integration"],
+      title: "Spoken Languages",
+      skills: ["Bangla (Native)", "English (Fluent)", "Hindi (Conversational)"],
     },
   ],
 
   experience: [
     {
-      company: "Softvench",
+      company: "Softvence",
       role: "Mobile Application Developer",
       period: "Oct 2025 – Present",
       location: "Dhaka, Bangladesh",
-      description: "",
+      description: "Developing production-ready Flutter applications for iOS and Android with scalable clean architecture.",
       responsibilities: [
-        "Designed and developed enterprise-grade Flutter & native iOS applications using Clean Architecture.",
-        "Implemented low-latency WebRTC 1:1 and group video calling with background mode support.",
-        "Integrated Stripe, Apple Pay, and Google Pay — achieving 100% transaction success rate in production.",
-        "Reduced app size by ~20% and cold start time by ~30% through profiling, asset compression, and code refactoring.",
-        "Managed full deployment lifecycle: TestFlight beta testing → App Store & Google Play releases."
+        "Developing production-ready Flutter apps for iOS/Android using Clean Architecture, MVVM, SOLID, and reactive state management.",
+        "Built real-time communication, live tracking, chat, payments (Stripe, Apple Pay, Google Pay), subscriptions, auth, notifications, maps, and AI features.",
+        "Integrated REST APIs, GraphQL, Firebase, WebSockets, WebRTC across healthcare, fitness, AI, e-commerce, food delivery, automotive, education, and finance apps.",
+        "Managed releases across App Store/Google Play; used Git, CI/CD, Shorebird OTA, Figma, and Postman."
       ],
-      technologies: ["Flutter", "Swift", "WebRTC", "Stripe", "Clean Architecture"],
+      technologies: ["Flutter", "Dart", "Swift", "Kotlin", "Clean Architecture", "MVVM", "WebSockets", "WebRTC", "Stripe", "Apple Pay", "Google Pay", "Shorebird OTA", "Firebase"],
     },
     {
-      company: "Softvench",
+      company: "Softvence",
       role: "Flutter Developer",
       period: "Mar 2025 – Oct 2025",
       location: "Dhaka, Bangladesh",
-      description: "",
+      description: "Cross-platform mobile development, reusable UI component library, and state management architecture.",
       responsibilities: [
-        "Shipped multiple production Flutter apps across live-streaming, logistics, e-learning, and e-commerce domains.",
-        "Built Flixoo and the Flixoo Smart TV App — live-streaming/VOD platforms with ExoPlayer adaptive-bitrate playback, multi-screen live TV, and voice search for Android TV.",
-        "Developed the Delix Courier rider and merchant apps — a full last-mile delivery suite with real-time parcel tracking and financial reporting.",
-        "Built the Faculty LMS Instructor App, integrating with a full LMS website and admin panel.",
-        "Contributed to YOORI, a multi-vendor e-commerce app with a customizable home builder and multi-gateway payments."
+        "Developed cross-platform apps with Flutter/Dart; built reusable, responsive UI components.",
+        "Integrated REST APIs and Firebase; implemented scalable state-management architecture.",
+        "Worked across health, e-commerce, food, lifestyle, logistics, and business domains; collaborated with design, backend, and QA teams.",
+        "Investigated and resolved UI, functional, API, and performance issues; supported release prep."
       ],
-      technologies: ["Flutter", "ExoPlayer", "Android TV", "E-commerce"],
+      technologies: ["Flutter", "Dart", "REST APIs", "Firebase", "GetX", "RxDart", "Provider", "Responsive UI"],
     },
     {
-      company: "Cityscape International Ltd",
-      role: "Flutter Developer (Intern)",
+      company: "Cityscape International Ltd.",
+      role: "Jr. Flutter Developer (Intern)",
       period: "Dec 2024 – Feb 2025",
       location: "Dhaka, Bangladesh",
-      description: "",
+      description: "Flutter application development with Provider, app optimization, and Agile sprint participation.",
       responsibilities: [
-        "Developed scalable Flutter applications with Provider state management, collaborating with design and backend teams.",
-        "Improved app performance by 30% and reduced bundle size by 20% via efficient coding practices and resource optimization."
+        "Built scalable Flutter apps using Provider state management; implemented responsive UI from design specs.",
+        "Improved application performance by 30% and reduced application bundle size by 20% through optimization.",
+        "Participated in Agile stand-ups, sprint planning, and code reviews with design/backend teams."
       ],
-      technologies: ["Flutter", "Provider", "Performance Optimization"],
+      technologies: ["Flutter", "Provider", "Performance Optimization", "Bundle Size Reduction", "Agile"],
     },
   ],
 
   education: [
     {
-      institution: "Daffodil International University",
-      degree: "B.Sc.",
-      field: "Computer Science and Engineering",
-      period: "Completed",
+      institution: "Daffodil International University, Dhaka",
+      degree: "B.Sc. in Computer Science & Engineering",
+      field: "Computer Science & Engineering",
+      period: "Aug 2019 – Oct 2024",
       location: "Dhaka, Bangladesh",
+      description: "GPA: 3.05",
     },
+    {
+      institution: "Govt. Azizul Haque College, Bogura",
+      degree: "Higher Secondary Certificate (HSC)",
+      field: "Science",
+      period: "Jan 2017 – Apr 2018",
+      location: "Bogura, Bangladesh",
+      description: "GPA: 4.85",
+    },
+    {
+      institution: "BIAM Model School & College, Bogura",
+      degree: "Secondary School Certificate (SSC)",
+      field: "Science",
+      period: "Jan 2015 – Apr 2016",
+      location: "Bogura, Bangladesh",
+      description: "GPA: 5.00",
+    },
+  ],
+
+  achievements: [
+    {
+      title: "22+ Apps Built, 16+ Deployed",
+      description: "Delivered and maintained production apps on Google Play and the Apple App Store.",
+      icon: "rocket"
+    },
+    {
+      title: "Performance Optimization",
+      description: "Improved app performance by 30% and reduced bundle size by 20%.",
+      icon: "zap"
+    },
+    {
+      title: "2+ Years Experience",
+      description: "Production Flutter development across AI, WebSockets, WebRTC, and payments.",
+      icon: "target"
+    }
   ],
 
   projects: [

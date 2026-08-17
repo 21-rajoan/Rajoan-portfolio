@@ -1,3 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-  <rect width="16" height="16" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="16" fill="#0B1015" />
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="#00E59B" stroke-width="2" stroke-opacity="0.4" />
+  <text x="32" y="42" font-family="'JetBrains Mono', -apple-system, sans-serif" font-size="28" font-weight="800" fill="#00E59B" text-anchor="middle" letter-spacing="-1">R</text>
 </svg>

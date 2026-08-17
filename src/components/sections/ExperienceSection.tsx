@@ -1,10 +1,10 @@
 import { useState } from "react";
 import portfolioData from "@/data/portfolioData";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { ChevronRight, Briefcase, CheckCircle2 } from "lucide-react";
+import { ChevronRight, Briefcase, CheckCircle2, GraduationCap, Award } from "lucide-react";
 
 export const ExperienceSection = () => {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
 
   const toggleExpand = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
@@ -14,6 +14,7 @@ export const ExperienceSection = () => {
     <section id="experience" className="py-16 relative bg-transparent">
       <div className="section-container relative z-10 w-full max-w-4xl mx-auto flex flex-col justify-center">
         
+        {/* Career Section */}
         <FadeIn>
           <div className="mb-8">
             <h2 className="font-mono text-white/80 text-sm md:text-base tracking-wide mb-2">
@@ -23,7 +24,7 @@ export const ExperienceSection = () => {
           </div>
         </FadeIn>
 
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-4 mb-16">
           {portfolioData.experience.map((job, idx) => {
             const isExpanded = expandedIndex === idx;
             
@@ -84,6 +85,47 @@ export const ExperienceSection = () => {
               </FadeIn>
             );
           })}
+        </div>
+
+        {/* Education Section */}
+        <FadeIn delay={200}>
+          <div className="mb-8">
+            <h2 className="font-mono text-white/80 text-sm md:text-base tracking-wide mb-2">
+              education.log
+            </h2>
+            <div className="w-full h-px bg-secondary"></div>
+          </div>
+        </FadeIn>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {portfolioData.education.map((edu, idx) => (
+            <FadeIn key={idx} delay={idx * 100}>
+              <div className="bg-card border border-border rounded-2xl p-6 h-full flex flex-col justify-between hover:border-primary/40 transition-colors">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                      <GraduationCap size={20} />
+                    </div>
+                    {edu.description && (
+                      <span className="px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-bold">
+                        {edu.description}
+                      </span>
+                    )}
+                  </div>
+                  <h4 className="text-base font-bold text-white mb-2 leading-snug">
+                    {edu.degree}
+                  </h4>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {edu.institution}
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-border/50 flex items-center justify-between text-xs font-mono text-white/50">
+                  <span>{edu.period}</span>
+                  {edu.location && <span>{edu.location.split(',')[0]}</span>}
+                </div>
+              </div>
+            </FadeIn>
+          ))}
         </div>
 
       </div>
