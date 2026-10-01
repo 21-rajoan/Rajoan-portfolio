@@ -1,133 +1,116 @@
-import { useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 import portfolioData from "@/data/portfolioData";
-import { FadeIn } from "@/components/ui/FadeIn";
-import { ChevronRight, Briefcase, CheckCircle2, GraduationCap, Award } from "lucide-react";
+
+const experiences = [
+  {
+    company: "Softvence",
+    role: "Mobile Application Developer",
+    period: "Mar 2025 — Present",
+    location: "Dhaka, Bangladesh",
+    bullets: [
+      "Architect and maintain cross-platform mobile apps for iOS and Android using Clean Architecture, MVVM, and reactive state management (GetX, RxDart, Provider).",
+      "Engineered real-time features — low-latency WebSockets, WebRTC live audio/video streaming, push notifications, and full payment integration (Stripe, Apple Pay, Google Pay).",
+      "Manage end-to-end App Store and Google Play releases with CI/CD pipelines and Shorebird over-the-air binary updates.",
+    ],
+    stack: ["Flutter", "Dart", "Swift", "Kotlin", "WebRTC", "Shorebird"],
+  },
+  {
+    company: "Cityscape International Ltd.",
+    role: "Junior Flutter Developer",
+    period: "Dec 2024 — Feb 2025",
+    location: "Dhaka, Bangladesh",
+    bullets: [
+      "Built responsive mobile UI with Provider state management following modular design specifications.",
+      "Improved runtime performance by 30% and reduced bundle sizes by 20% through memory profiling and asset optimization.",
+    ],
+    stack: ["Flutter", "Provider", "Dart"],
+  },
+];
 
 export const ExperienceSection = () => {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
-
-  const toggleExpand = (index: number) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
-  };
-
   return (
-    <section id="experience" className="py-16 relative bg-transparent">
-      <div className="section-container relative z-10 w-full max-w-4xl mx-auto flex flex-col justify-center">
-        
-        {/* Career Section */}
-        <FadeIn>
-          <div className="mb-8">
-            <h2 className="font-mono text-white/80 text-sm md:text-base tracking-wide mb-2">
-              career.log
-            </h2>
-            <div className="w-full h-px bg-secondary"></div>
+    <section
+      id="experience"
+      className="mb-20 scroll-mt-16 md:mb-28 lg:scroll-mt-24"
+      aria-label="Work experience"
+    >
+      <h2 className="section-label">Experience</h2>
+
+      {/* Timeline */}
+      <div className="space-y-14">
+        {experiences.map((job, idx) => (
+          <div key={idx} className="group relative">
+
+            {/* Period badge */}
+            <p className="text-[11px] font-mono tracking-[0.08em] text-[#4a5c78] uppercase mb-2.5">
+              {job.period}
+            </p>
+
+            {/* Role + Company */}
+            <h3 className="text-[15px] sm:text-[16px] font-semibold text-[#CCD6F6] leading-tight mb-0.5">
+              {job.role}
+              <span className="text-[#64FFDA]"> · {job.company}</span>
+            </h3>
+
+            {/* Location */}
+            <p className="text-[12px] font-mono text-[#4a5c78] mb-4">
+              {job.location}
+            </p>
+
+            {/* Bullets */}
+            <ul className="space-y-3">
+              {job.bullets.map((bullet, bIdx) => (
+                <li key={bIdx} className="flex items-start gap-3 text-[13.5px] text-[#8892B0] leading-[1.75]">
+                  <span className="text-[#64FFDA] text-[9px] mt-[6px] flex-shrink-0">▹</span>
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* Stack pills */}
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              {job.stack.map((tech) => (
+                <span
+                  key={tech}
+                  className="inline-flex items-center px-2.5 py-[3px] rounded-sm text-[11px] font-mono
+                             text-[#64FFDA] bg-[#64FFDA]/8 border border-[#64FFDA]/15"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* Separator — not on last item */}
+            {idx < experiences.length - 1 && (
+              <div className="mt-14 h-px bg-[#233554]/40" />
+            )}
           </div>
-        </FadeIn>
+        ))}
+      </div>
 
-        <div className="flex flex-col space-y-4 mb-16">
-          {portfolioData.experience.map((job, idx) => {
-            const isExpanded = expandedIndex === idx;
-            
-            return (
-              <FadeIn key={idx} delay={idx * 100}>
-                <div className="border-b border-border/50 pb-4">
-                  {/* Clickable Header */}
-                  <button 
-                    onClick={() => toggleExpand(idx)}
-                    className="w-full text-left flex items-center gap-3 py-2 group focus:outline-none"
-                  >
-                    <ChevronRight 
-                      size={18} 
-                      className={`text-primary transition-transform duration-300 flex-shrink-0 ${isExpanded ? 'rotate-90' : ''}`} 
-                    />
-                    <span className="font-mono text-white/90 text-sm sm:text-base group-hover:text-primary transition-colors truncate">
-                      {job.company} — {job.period}
-                    </span>
-                  </button>
-
-                  {/* Expandable Content */}
-                  <div 
-                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                      isExpanded ? 'max-h-[1000px] opacity-100 mt-6 mb-4' : 'max-h-0 opacity-0'
-                    }`}
-                  >
-                    <div className="pl-8 sm:pl-10">
-                      <h4 className="text-2xl font-bold text-white mb-2">
-                        {job.role}
-                      </h4>
-                      <div className="flex items-center gap-2 text-muted-foreground mb-6">
-                        <Briefcase size={14} className="opacity-70" />
-                        <span className="text-sm">{job.location}</span>
-                      </div>
-                      
-                      <ul className="space-y-3 mb-6">
-                        {job.responsibilities.map((task, taskIdx) => (
-                          <li key={taskIdx} className="text-muted-foreground/90 flex items-start gap-3 text-sm md:text-base">
-                            <CheckCircle2 size={16} className="text-primary opacity-70 mt-0.5 flex-shrink-0" />
-                            <span className="leading-relaxed">{task}</span>
-                          </li>
-                        ))}
-                      </ul>
-
-                      <div className="flex flex-wrap gap-2">
-                        {job.technologies.map((tech, techIdx) => (
-                          <span 
-                            key={techIdx}
-                            className="px-2.5 py-1 rounded-md bg-card border border-border text-[11px] font-mono text-white/70"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </FadeIn>
-            );
-          })}
+      {/* Footer: Education + Résumé */}
+      <div className="mt-14 pt-8 border-t border-[#1a2e50] flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+        <div>
+          <p className="text-[13px] font-medium text-[#CCD6F6]">
+            B.Sc. in Computer Science &amp; Engineering
+          </p>
+          <p className="text-[12px] font-mono text-[#4a5c78] mt-0.5">
+            Daffodil International University · 2019 – 2024
+          </p>
         </div>
 
-        {/* Education Section */}
-        <FadeIn delay={200}>
-          <div className="mb-8">
-            <h2 className="font-mono text-white/80 text-sm md:text-base tracking-wide mb-2">
-              education.log
-            </h2>
-            <div className="w-full h-px bg-secondary"></div>
-          </div>
-        </FadeIn>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {portfolioData.education.map((edu, idx) => (
-            <FadeIn key={idx} delay={idx * 100}>
-              <div className="bg-card border border-border rounded-2xl p-6 h-full flex flex-col justify-between hover:border-primary/40 transition-colors">
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
-                      <GraduationCap size={20} />
-                    </div>
-                    {edu.description && (
-                      <span className="px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-bold">
-                        {edu.description}
-                      </span>
-                    )}
-                  </div>
-                  <h4 className="text-base font-bold text-white mb-2 leading-snug">
-                    {edu.degree}
-                  </h4>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    {edu.institution}
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-border/50 flex items-center justify-between text-xs font-mono text-white/50">
-                  <span>{edu.period}</span>
-                  {edu.location && <span>{edu.location.split(',')[0]}</span>}
-                </div>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-
+        <a
+          href={portfolioData.personal.resumeUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="group inline-flex items-center gap-1.5 text-[12px] font-mono text-[#8892B0] hover:text-[#64FFDA] transition-colors duration-200"
+        >
+          View Full Résumé
+          <ArrowUpRight
+            size={13}
+            className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-200"
+          />
+        </a>
       </div>
     </section>
   );

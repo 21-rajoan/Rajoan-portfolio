@@ -1,197 +1,413 @@
-import { useState, useMemo } from "react";
-import portfolioData from "@/data/portfolioData";
-import { FadeIn } from "@/components/ui/FadeIn";
-import { Search, Apple, PlayCircle, ExternalLink, List, LayoutGrid } from "lucide-react";
+import { useState } from "react";
+import {
+  Apple,
+  PlayCircle,
+  ArrowUpRight,
+  Image as ImageIcon,
+  X,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import portfolioData, { ShowcaseItem } from "@/data/portfolioData";
+
+const allProjects = [
+  {
+    id: "nutriprime",
+    title: "Nutriprime",
+    category: "Health & Wellness",
+    tag: "Health & AI",
+    description:
+      "Healthcare marketplace connecting nutritionists with patients — custom meal plans, progress tracking, and Stripe payment processing.",
+    technologies: ["Flutter", "Clean Architecture", "Stripe", "Firebase"],
+    appStoreUrl: portfolioData.projects.find((p) => p.id === "lightuptech")?.appStoreUrl,
+    playStoreUrl: portfolioData.projects.find((p) => p.id === "lightuptech")?.playStoreUrl,
+    image: "/nutriprime-logo.png",
+    featured: true,
+    showcaseId: "nutriprime-showcase",
+  },
+  {
+    id: "bp-fitness",
+    title: "BP Fitness",
+    category: "Health & Fitness",
+    tag: "Health & AI",
+    description:
+      "Fitness app with structured workout programs, AI-powered meal planning, and Apple In-App Purchases for auto-renewing subscriptions.",
+    technologies: ["Flutter", "Swift", "In-App Purchases", "Firebase"],
+    appStoreUrl: portfolioData.projects.find((p) => p.id === "bp-fitness")?.appStoreUrl,
+    image: "/bp-fitness-logo.png",
+    featured: true,
+    showcaseId: "bp-fitness-showcase",
+  },
+  {
+    id: "castors",
+    title: "CASTORS",
+    category: "Culinary AI",
+    tag: "Health & AI",
+    description:
+      "AI-driven recipe assistant that generates structured, step-by-step culinary instructions from ingredients on hand.",
+    technologies: ["Flutter", "AI Engine", "GetX", "Dio"],
+    appStoreUrl: portfolioData.projects.find((p) => p.id === "castors")?.appStoreUrl,
+    playStoreUrl: portfolioData.projects.find((p) => p.id === "castors")?.playStoreUrl,
+    image: "/castors-logo.png",
+    featured: true,
+    showcaseId: "castors-showcase",
+  },
+  {
+    id: "my-carmate",
+    title: "My CarMate",
+    category: "Automotive & Services",
+    tag: "Commerce",
+    description:
+      "Automotive service booking with real-time WebSockets sync, interactive scheduling calendars, and OTP authentication.",
+    technologies: ["Flutter", "WebSockets", "Clean Architecture", "Firebase"],
+    appStoreUrl: portfolioData.projects.find((p) => p.id === "my-carmate")?.appStoreUrl,
+    image: "/carmate-logo.png",
+    featured: true,
+  },
+  {
+    id: "registree",
+    title: "Registree",
+    category: "Product Registry",
+    tag: "Commerce",
+    description:
+      "Baby product registry with instant barcode/QR scanning for ingredient safety lookups, certifications, and push notifications.",
+    technologies: ["Flutter", "Barcode Scanner", "Firebase FCM", "GetX"],
+    appStoreUrl: portfolioData.projects.find((p) => p.id === "registree")?.appStoreUrl,
+    image: "/registree-logo.png",
+    featured: true,
+    showcaseId: "registree-showcase",
+  },
+  {
+    id: "theakktricks",
+    title: "Theakktricks",
+    category: "Entertainment & Media",
+    tag: "Media & Lifestyle",
+    description:
+      "Social entertainment platform with custom in-app video recording, live streaming, and real-time community interactions via WebSockets.",
+    technologies: ["Flutter", "Live Streaming", "WebSockets", "Camera API"],
+    appStoreUrl: portfolioData.projects.find((p) => p.id === "theakktricks")?.appStoreUrl,
+    playStoreUrl: portfolioData.projects.find((p) => p.id === "theakktricks")?.playStoreUrl,
+    image: "/theakktricks-logo.png",
+    featured: true,
+  },
+  {
+    id: "lifresh",
+    title: "Lifresh",
+    category: "E-Commerce & Delivery",
+    tag: "Commerce",
+    description:
+      "Fresh grocery delivery app with personalized product filtering, one-tap checkout, and instant order tracking.",
+    technologies: ["Flutter", "E-Commerce", "Push Notifications", "REST API"],
+    appStoreUrl: portfolioData.projects.find((p) => p.id === "lifresh")?.appStoreUrl,
+    playStoreUrl: portfolioData.projects.find((p) => p.id === "lifresh")?.playStoreUrl,
+    image: "/lifresh-logo.png",
+    featured: true,
+  },
+  {
+    id: "storybun",
+    title: "StoryBun",
+    category: "Education & AI",
+    tag: "Health & AI",
+    description:
+      "Interactive language learning app generating custom stories with Hanzi characters, Pinyin annotations, and tier subscriptions.",
+    technologies: ["Flutter", "AI Story Engine", "In-App Subscriptions", "Firebase"],
+    appStoreUrl: portfolioData.projects.find((p) => p.id === "storybun")?.appStoreUrl,
+    playStoreUrl: portfolioData.projects.find((p) => p.id === "storybun")?.playStoreUrl,
+    image: "/storybun-logo.png",
+    featured: true,
+  },
+  {
+    id: "my-wedding-music",
+    title: "My Wedding Music",
+    category: "Lifestyle & Events",
+    tag: "Media & Lifestyle",
+    description:
+      "Ceremony soundtrack planner — structure key moments, link Spotify/YouTube tracks, and export formatted PDF playlists.",
+    technologies: ["Flutter", "PDF Generation", "Spotify API", "GetX"],
+    appStoreUrl: portfolioData.projects.find((p) => p.id === "my-wedding-music")?.appStoreUrl,
+    playStoreUrl: portfolioData.projects.find((p) => p.id === "my-wedding-music")?.playStoreUrl,
+    image: "/my-wedding-music-logo.png",
+    featured: false,
+  },
+  {
+    id: "foodlab-hub",
+    title: "FoodLab Hub",
+    category: "Food Marketplace",
+    tag: "Commerce",
+    description:
+      "Community food marketplace connecting home chefs with buyers via live discovery maps, meal pre-ordering, and store management.",
+    technologies: ["Flutter", "Live Maps", "Order Management", "Firebase"],
+    appStoreUrl: portfolioData.projects.find((p) => p.id === "foodlab-hub")?.appStoreUrl,
+    playStoreUrl: portfolioData.projects.find((p) => p.id === "foodlab-hub")?.playStoreUrl,
+    image: "/foodlab-logo.png",
+    featured: false,
+  },
+  {
+    id: "jjs-firewood",
+    title: "JJ's Firewood Perth",
+    category: "Logistics & Delivery",
+    tag: "Commerce",
+    description:
+      "On-demand ordering and delivery platform for premium firewood across Perth, with transparent pricing and live status tracking.",
+    technologies: ["Flutter", "Live Tracking", "Order Management", "REST API"],
+    appStoreUrl: portfolioData.projects.find((p) => p.id === "jjs-firewood")?.appStoreUrl,
+    playStoreUrl: portfolioData.projects.find((p) => p.id === "jjs-firewood")?.playStoreUrl,
+    image: "/jjs-firewood-logo.png",
+    featured: false,
+  },
+  {
+    id: "bingeboss",
+    title: "BingeBoss",
+    category: "Finance & Utility",
+    tag: "Media & Lifestyle",
+    description:
+      "Subscription tracker that aggregates recurring digital memberships, sends smart expiration reminders, and manages RevenueCat tiers.",
+    technologies: ["Flutter", "RevenueCat", "Push Notifications", "Firebase"],
+    appStoreUrl: portfolioData.projects.find((p) => p.id === "bingeboss")?.appStoreUrl,
+    image: "/bingeboss-logo.png",
+    featured: false,
+  },
+];
+
+const filterTabs = [
+  { label: "All", value: "All" },
+  { label: "Featured", value: "Featured" },
+  { label: "Health & AI", value: "Health & AI" },
+  { label: "Commerce", value: "Commerce" },
+  { label: "Media & Lifestyle", value: "Media & Lifestyle" },
+];
 
 export const ProjectsSection = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [activeFilter, setActiveFilter] = useState("All");
+  const [selectedShowcase, setSelectedShowcase] = useState<ShowcaseItem | null>(null);
+  const [activeScreenIndex, setActiveScreenIndex] = useState(0);
 
-  // Extract unique categories
-  const categories = useMemo(() => {
-    const cats = new Set(portfolioData.projects.map(p => p.category));
-    return ["All", ...Array.from(cats)];
-  }, []);
+  const filtered = allProjects.filter((p) => {
+    if (activeFilter === "All") return true;
+    if (activeFilter === "Featured") return p.featured;
+    return p.tag === activeFilter;
+  });
 
-  const handleCategoryChange = (cat: string) => {
-    setActiveCategory(cat);
+  const openShowcase = (showcaseId?: string) => {
+    if (!showcaseId) return;
+    const item = (portfolioData.featuredShowcase || []).find((s) => s.id === showcaseId);
+    if (item) {
+      setSelectedShowcase(item);
+      setActiveScreenIndex(0);
+    }
   };
-
-  const handleSearchChange = (query: string) => {
-    setSearchQuery(query);
-  };
-
-  // Filter projects
-  const filteredProjects = useMemo(() => {
-    return portfolioData.projects.filter(project => {
-      const matchesCategory = activeCategory === "All" || project.category === activeCategory;
-      const matchesSearch = 
-        project.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-        project.shortDescription.toLowerCase().includes(searchQuery.toLowerCase());
-      
-      return matchesCategory && matchesSearch;
-    });
-  }, [activeCategory, searchQuery]);
 
   return (
-    <section id="projects" className="py-16 relative bg-transparent">
-      <div className="section-container relative z-10 w-full max-w-4xl mx-auto flex flex-col justify-center">
-        
-        <FadeIn>
-          <div className="mb-8">
-            <h2 className="font-mono text-white/80 text-sm md:text-base tracking-wide mb-2">
-              work
-            </h2>
-            <div className="w-full h-px bg-secondary mb-8"></div>
-            <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight mb-3">
-              The Index
-            </h3>
-            <p className="text-white/60 text-base md:text-lg mb-10 max-w-2xl">
-              12 Featured Case Studies — Selected production applications from 16+ live apps deployed (22+ apps built total).
-            </p>
-          </div>
-        </FadeIn>
-
-        {/* Filters */}
-        <FadeIn delay={100} direction="up">
-          <div className="flex flex-col gap-6 mb-10">
-            {/* Categories */}
-            <div className="flex flex-wrap gap-3">
-              {categories.map((cat, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleCategoryChange(cat)}
-                  className={`px-5 py-2 rounded-full text-sm font-medium transition-colors border ${
-                    activeCategory === cat 
-                      ? "bg-card border-primary text-primary" 
-                      : "bg-card border-border text-white/70 hover:border-primary/50"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-
-            {/* Search */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-2">
-              <div className="flex items-center gap-2 text-white/50 hidden sm:flex">
-                <List size={20} className="text-white/80" />
-                <LayoutGrid size={20} className="hover:text-white/80 cursor-pointer transition-colors" />
-              </div>
-              
-              <div className="relative flex-grow">
-                <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/50" />
-                <input 
-                  type="text" 
-                  placeholder="Search apps..." 
-                  value={searchQuery}
-                  onChange={(e) => handleSearchChange(e.target.value)}
-                  className="w-full bg-card border border-border rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-white/40 focus:outline-none focus:border-primary/50 transition-colors"
-                />
-              </div>
-            </div>
-          </div>
-        </FadeIn>
-
-        {/* Results Counter */}
-        <FadeIn delay={200} direction="up">
-          <div className="text-white/60 text-sm font-mono mb-6 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary inline-block animate-pulse"></span>
-              Showing {filteredProjects.length} filtered apps (22+ built, 16+ deployed)
-            </div>
-          </div>
-        </FadeIn>
-
-        {/* Project List */}
-        <div className="flex flex-col space-y-6">
-          {filteredProjects.map((project, idx) => {
-            const displayNumber = String(idx + 1).padStart(2, '0');
-            
-            // Derive generic letter for icon
-            const letterIcon = project.title.charAt(0).toUpperCase();
-
-            return (
-              <FadeIn key={project.id || idx} delay={50} direction="up">
-                <div className="bg-card border border-border rounded-3xl p-6 md:p-8 hover:border-primary/30 transition-colors relative group">
-                  
-                  {/* Number tag */}
-                  <span className="absolute top-6 right-6 font-mono text-white/30 text-xs">
-                    {displayNumber}
-                  </span>
-
-                  <div className="flex items-start gap-6 mb-6">
-                    {/* App Icon Placeholder */}
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-[#222F35] to-[#11181C] border border-border flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-105 transition-transform overflow-hidden">
-                      {project.image ? (
-                        <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                      ) : (
-                        <span className="text-2xl font-bold text-white/80">{letterIcon}</span>
-                      )}
-                    </div>
-
-                    <div className="flex-grow pt-1 sm:pt-2">
-                      <h4 className="project-title group-hover:text-primary transition-colors mb-1">
-                        {project.title.split(" — ")[0]}
-                      </h4>
-                      <span className="project-category">
-                        {project.category}
-                      </span>
-                    </div>
-                  </div>
-
-                  <p className="project-desc mb-6">
-                    {project.shortDescription}
-                  </p>
-
-                  {/* Platforms */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.platform.map((plat, pIdx) => (
-                      <span 
-                        key={pIdx}
-                        className="project-badge"
-                      >
-                        {plat === 'ANDROID' ? 'Android' : plat === 'IOS' ? 'iOS' : plat === 'ANDROID TV' ? 'Android TV' : plat}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Store Buttons */}
-                  <div className="flex flex-wrap gap-3 project-actions">
-                    {project.platform.includes('IOS') && (
-                      <a href={project.appStoreUrl || project.liveUrl || "#"} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-secondary/30 border border-border text-white/90 text-sm font-medium hover:bg-secondary hover:text-white transition-colors group/btn">
-                        <Apple size={16} className="opacity-70 group-hover/btn:opacity-100" />
-                        App Store
-                      </a>
-                    )}
-                    {(project.platform.includes('ANDROID') || project.platform.includes('ANDROID TV')) && (
-                      <a href={project.playStoreUrl || project.liveUrl || "#"} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-secondary/30 border border-border text-white/90 text-sm font-medium hover:bg-secondary hover:text-white transition-colors group/btn">
-                        <PlayCircle size={16} className="opacity-70 group-hover/btn:opacity-100 text-primary" />
-                        Google Play
-                      </a>
-                    )}
-                    {/* Fallback button if neither is explicitly defined */}
-                    {!project.platform.includes('IOS') && !project.platform.includes('ANDROID') && !project.platform.includes('ANDROID TV') && (
-                      <a href={project.liveUrl || "#"} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-secondary/30 border border-border text-white/90 text-sm font-medium hover:bg-secondary hover:text-white transition-colors group/btn">
-                        <ExternalLink size={16} className="opacity-70 group-hover/btn:opacity-100" />
-                        View Live
-                      </a>
-                    )}
-                  </div>
-
-                </div>
-              </FadeIn>
-            );
-          })}
-          
-          {filteredProjects.length === 0 && (
-            <div className="text-center py-12 text-white/50">
-              No apps found matching your search.
-            </div>
-          )}
-        </div>
-
+    <section
+      id="projects"
+      className="mb-20 scroll-mt-16 md:mb-28 lg:scroll-mt-24"
+      aria-label="Projects"
+    >
+      {/* Section header row */}
+      <div className="flex items-baseline justify-between mb-7">
+        <h2 className="section-label !mb-0">Projects</h2>
+        <span className="hidden sm:block text-[11px] font-mono text-[#4a5c78]">
+          {filtered.length} of {allProjects.length}
+        </span>
       </div>
+
+      {/* Filter tabs */}
+      <div className="flex flex-wrap gap-1.5 mb-8">
+        {filterTabs.map((tab) => (
+          <button
+            key={tab.value}
+            onClick={() => setActiveFilter(tab.value)}
+            className={`px-3.5 py-1.5 rounded-sm text-[11px] font-mono tracking-wide transition-all duration-150 ${
+              activeFilter === tab.value
+                ? "text-[#0A192F] bg-[#64FFDA] font-semibold"
+                : "text-[#4a5c78] bg-transparent border border-[#1a2e50] hover:text-[#8892B0] hover:border-[#233554]"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Project list */}
+      <div className="space-y-4">
+        {filtered.map((project) => {
+          const primaryLink = project.appStoreUrl || project.playStoreUrl || "#";
+
+          return (
+            <div key={project.id} className="project-card group">
+              <div className="flex items-start justify-between gap-4">
+
+                {/* Left: icon + meta */}
+                <div className="flex items-start gap-4">
+                  {/* App icon */}
+                  <div className="w-[46px] h-[46px] rounded-xl overflow-hidden border border-[#1a2e50] bg-[#091829] flex-shrink-0">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  {/* Title + category */}
+                  <div className="min-w-0">
+                    <span className="block text-[10px] font-mono tracking-[0.12em] text-[#4a5c78] uppercase mb-0.5">
+                      {project.category}
+                    </span>
+                    <h3 className="text-[15px] font-semibold text-[#CCD6F6] leading-snug">
+                      <a
+                        href={primaryLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 hover:text-[#64FFDA] transition-colors duration-150"
+                      >
+                        {project.title}
+                        <ArrowUpRight
+                          size={13}
+                          className="opacity-0 group-hover:opacity-60 -translate-y-0.5 translate-x-0.5 transition-all duration-150"
+                        />
+                      </a>
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Right: store links */}
+                <div className="flex items-center gap-1.5 flex-shrink-0 mt-0.5">
+                  {project.showcaseId && (
+                    <button
+                      onClick={() => openShowcase(project.showcaseId)}
+                      title="View Screenshots"
+                      className="p-1.5 rounded text-[#4a5c78] hover:text-[#64FFDA] hover:bg-[#64FFDA]/8 transition-all duration-150"
+                    >
+                      <ImageIcon size={14} strokeWidth={1.6} />
+                    </button>
+                  )}
+                  {project.appStoreUrl && (
+                    <a
+                      href={project.appStoreUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      title="App Store"
+                      className="p-1.5 rounded text-[#4a5c78] hover:text-[#8892B0] hover:bg-[#1a2e50] transition-all duration-150"
+                    >
+                      <Apple size={14} strokeWidth={1.6} />
+                    </a>
+                  )}
+                  {project.playStoreUrl && (
+                    <a
+                      href={project.playStoreUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      title="Google Play"
+                      className="p-1.5 rounded text-[#4a5c78] hover:text-[#8892B0] hover:bg-[#1a2e50] transition-all duration-150"
+                    >
+                      <PlayCircle size={14} strokeWidth={1.6} />
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              {/* Description */}
+              <p className="mt-3 text-[13px] text-[#8892B0] leading-[1.7] pl-[62px]">
+                {project.description}
+              </p>
+
+              {/* Tech tags */}
+              <div className="mt-3 pl-[62px] flex flex-wrap gap-1.5">
+                {project.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="inline-flex items-center px-2.5 py-[3px] rounded-sm text-[11px] font-mono
+                               text-[#4a5c78] bg-[#091829] border border-[#1a2e50]"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* ── Showcase Modal ── */}
+      {selectedShowcase?.images && selectedShowcase.images.length > 0 && (
+        <div
+          className="fixed inset-0 z-50 bg-[#0A192F]/92 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setSelectedShowcase(null)}
+        >
+          <div
+            className="relative w-full max-w-xl bg-[#0d1f3c] border border-[#1e3358] rounded-xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal header */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-[#1a2e50]">
+              <div className="flex items-center gap-2.5">
+                <span className="text-[10px] font-mono tracking-widest text-[#64FFDA] uppercase">
+                  Showcase
+                </span>
+                <span className="text-[#1e3358]">·</span>
+                <span className="text-[13px] font-semibold text-[#CCD6F6]">
+                  {selectedShowcase.title}
+                </span>
+              </div>
+              <button
+                onClick={() => setSelectedShowcase(null)}
+                aria-label="Close"
+                className="p-1 rounded text-[#4a5c78] hover:text-[#8892B0] transition-colors"
+              >
+                <X size={16} strokeWidth={1.6} />
+              </button>
+            </div>
+
+            {/* Image */}
+            <div className="relative bg-[#091829] h-[380px] sm:h-[460px] flex items-center justify-center">
+              <img
+                src={selectedShowcase.images[activeScreenIndex]}
+                alt={`${selectedShowcase.title} screen ${activeScreenIndex + 1}`}
+                className="h-full w-full object-contain"
+              />
+
+              {selectedShowcase.images.length > 1 && (
+                <>
+                  <button
+                    onClick={() =>
+                      setActiveScreenIndex(
+                        (activeScreenIndex - 1 + selectedShowcase.images!.length) %
+                          selectedShowcase.images!.length
+                      )
+                    }
+                    aria-label="Previous"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#0d1f3c]/80 border border-[#1e3358] text-[#8892B0] hover:text-[#CCD6F6] flex items-center justify-center transition-colors"
+                  >
+                    <ChevronLeft size={16} />
+                  </button>
+                  <button
+                    onClick={() =>
+                      setActiveScreenIndex(
+                        (activeScreenIndex + 1) % selectedShowcase.images!.length
+                      )
+                    }
+                    aria-label="Next"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#0d1f3c]/80 border border-[#1e3358] text-[#8892B0] hover:text-[#CCD6F6] flex items-center justify-center transition-colors"
+                  >
+                    <ChevronRight size={16} />
+                  </button>
+                </>
+              )}
+            </div>
+
+            {/* Footer */}
+            <div className="flex items-center justify-between px-6 py-3 border-t border-[#1a2e50]">
+              <span className="text-[11px] font-mono text-[#4a5c78]">
+                {selectedShowcase.imageLabels?.[activeScreenIndex]}
+              </span>
+              <span className="text-[11px] font-mono text-[#64FFDA]">
+                {activeScreenIndex + 1} / {selectedShowcase.images.length}
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

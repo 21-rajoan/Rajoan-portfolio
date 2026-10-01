@@ -1,5 +1,6 @@
 
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
 	darkMode: ["class"],
@@ -25,6 +26,31 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				navy: {
+					950: '#020C1B',
+					900: '#0A192F',
+					800: '#112240',
+					700: '#172A45',
+					600: '#233554',
+					500: '#304263',
+				},
+				teal: {
+					DEFAULT: '#64FFDA',
+					light: '#7BFFE0',
+					dark: '#48D5B5',
+				},
+				slate: {
+					50: '#F8FAFC',
+					100: '#F1F5F9',
+					200: '#E2E8F0',
+					300: '#CCD6F6',
+					400: '#A8B2D1',
+					500: '#8892B0',
+					600: '#495670',
+					700: '#334155',
+					800: '#1E293B',
+					900: '#0F172A',
+				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -126,5 +152,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [tailwindcssAnimate],
 } satisfies Config;

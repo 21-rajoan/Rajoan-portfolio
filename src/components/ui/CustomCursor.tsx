@@ -89,24 +89,24 @@ export const CustomCursor = () => {
         ref={dotRef}
         className={`absolute top-0 left-0 w-2 h-2 rounded-full mix-blend-screen transition-all duration-200 ease-out`}
         style={{ 
-          backgroundColor: isHovering ? 'transparent' : '#00E59B',
+          backgroundColor: isHovering ? 'transparent' : '#64FFDA',
         }}
       />
       
-      {/* Trailing Ring with Glow */}
+      {/* Trailing Ring */}
       <div 
         ref={ringRef}
-        className="absolute top-0 left-0 w-8 h-8 rounded-full border border-[#00E59B]/50 transition-all duration-300 ease-out flex items-center justify-center backdrop-blur-[1px]"
+        className="absolute top-0 left-0 w-8 h-8 rounded-full border border-[#64FFDA]/50 transition-all duration-300 ease-out flex items-center justify-center backdrop-blur-[1px]"
         style={{ 
           transform: `scale(${isHovering ? 1.5 : 1})`,
-          backgroundColor: isHovering ? 'rgba(0, 229, 155, 0.15)' : 'transparent',
-          boxShadow: isHovering ? '0 0 25px rgba(0, 229, 155, 0.4)' : '0 0 10px rgba(0, 229, 155, 0.1)',
-          borderColor: isHovering ? 'rgba(0, 229, 155, 0.8)' : 'rgba(0, 229, 155, 0.5)'
+          backgroundColor: isHovering ? 'rgba(100, 255, 218, 0.1)' : 'transparent',
+          boxShadow: isHovering ? '0 0 15px rgba(100, 255, 218, 0.2)' : 'none',
+          borderColor: isHovering ? 'rgba(100, 255, 218, 0.6)' : 'rgba(100, 255, 218, 0.3)'
         }}
       >
         {/* Inner glow ping when hovering */}
         <div 
-          className={`absolute inset-0 rounded-full bg-[#00E59B] transition-opacity duration-300 ${isHovering ? 'opacity-20 animate-ping' : 'opacity-0'}`} 
+          className={`absolute inset-0 rounded-full bg-[#64FFDA] transition-opacity duration-300 ${isHovering ? 'opacity-20 animate-ping' : 'opacity-0'}`} 
         />
       </div>
     </div>

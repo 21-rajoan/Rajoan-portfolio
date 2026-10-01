@@ -123,12 +123,13 @@ const portfolioData: PortfolioData = {
     name: "Rajoan Tamjid Antor",
     firstName: "Rajoan",
     lastName: "Tamjid Antor",
-    role: "Mobile Application Developer",
-    tagline: "Building apps people actually love.",
-    subTagline: "Flutter • Swift • Kotlin — 2+ years crafting production mobile apps. Built 22+ mobile apps, 16+ deployed & maintained across Google Play and Apple App Store. Strong focus on Clean Architecture, WebSockets, WebRTC, AI integration, and payments.",
+    role: "Software Engineer — Mobile Applications",
+    tagline: "Engineering robust, high-performance mobile systems.",
+    subTagline: "Software Engineer specializing in cross-platform mobile architectures (Flutter, Swift, Kotlin). Focused on Clean Architecture, reactive state management, low-latency streaming, and scalable native integrations.",
     bio: [
-      "Mobile Application Developer with 2+ years of experience building and maintaining production mobile applications for iOS and Android. Built 22+ mobile applications and contributed to 16+ applications deployed and maintained on Google Play and the Apple App Store.",
-      "Strong focus on Flutter, Clean Architecture, scalable application design, API integration, real-time features, payments, subscriptions, and AI integrations across e-commerce, health & wellness, food & marketplace, automotive, education, and finance domains.",
+      "I am a Software Engineer specializing in mobile applications with a strong foundation in computer science and production software engineering. I design and build reliable, scalable, and responsive mobile systems for iOS and Android, focusing on Clean Architecture, modular state management (BLoC, Riverpod, GetX), and predictable data pipelines.",
+      "Over the past 2+ years, I have engineered and maintained 16+ production applications deployed across Google Play and the Apple App Store. My experience covers healthtech, automotive, e-commerce, real-time communication, and AI-enabled platforms—integrating low-latency WebSockets, WebRTC video/audio streaming, and mission-critical payment workflows (Stripe, Apple In-App Purchases, Google Play Billing, RevenueCat).",
+      "I focus on architecture, performance, and long-term maintainability: optimizing bundle sizes, profiling 60fps frame rates, establishing automated CI/CD releases with Shorebird OTA, and ensuring high code quality through rigorous design patterns.",
     ],
     email: "rajoantamjid.21@gmail.com",
     phone: "+8801734341140",
@@ -137,10 +138,10 @@ const portfolioData: PortfolioData = {
     resumeUrl: "/resume",
     avatarUrl: "/workspace-developer.jpg",
     stats: [
-      { value: "22+", label: "APPS BUILT" },
-      { value: "16+", label: "APPS DEPLOYED" },
-      { value: "2+", label: "YEARS XP" },
-      { value: "30%", label: "PERF BOOST" },
+      { value: "2+", label: "Years Experience" },
+      { value: "16+", label: "Production Apps Deployed" },
+      { value: "30%", label: "Runtime & Bundle Optimization" },
+      { value: "99.9%", label: "Target Crash-Free Rate" },
     ]
   },
 
@@ -165,43 +166,43 @@ const portfolioData: PortfolioData = {
   navItems: [
     { name: "About", href: "#about" },
     { name: "Experience", href: "#experience" },
-    { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
+    { name: "Skills", href: "#skills" },
     { name: "Contact", href: "#contact" },
   ],
 
   skillCategories: [
     {
-      title: "Languages",
-      skills: ["Dart", "Swift", "Kotlin", "Java", "JS/TS", "C++"],
+      title: "Core Languages",
+      skills: ["Dart", "Swift", "Kotlin", "TypeScript", "JavaScript", "Java", "C++"],
+    },
+    {
+      title: "Architecture & Design",
+      skills: ["Clean Architecture", "MVVM Pattern", "SOLID Principles", "Feature-First Modularity", "TDD & Unit Testing"],
     },
     {
       title: "State Management",
-      skills: ["GetX", "DartRX", "Provider", "Riverpod", "BLoC / Cubit"],
+      skills: ["BLoC / Cubit", "Riverpod", "GetX", "RxDart", "Provider"],
     },
     {
-      title: "Architecture & Quality",
-      skills: ["Clean Architecture", "MVVM", "SOLID", "TDD", "Unit Testing", "Responsive UI"],
+      title: "Networking & Real-Time",
+      skills: ["RESTful APIs", "Dio (Interceptors & Cache)", "GraphQL", "WebSockets", "WebRTC", "Firebase FCM"],
     },
     {
-      title: "Backend & Realtime",
-      skills: ["REST APIs", "GraphQL", "Firebase", "WebSockets", "WebRTC", "Google Maps"],
-    },
-    {
-      title: "Databases",
-      skills: ["MongoDB", "MySQL", "PostgreSQL", "SQLite", "Hive"],
+      title: "Databases & Persistence",
+      skills: ["SQLite", "Hive", "Isar", "PostgreSQL", "MongoDB", "Cloud Firestore"],
     },
     {
       title: "Payments & Subscriptions",
-      skills: ["Stripe", "Culqi", "Apple Pay", "Google Pay", "RevenueCat", "In-App Purchases"],
+      skills: ["Apple In-App Purchases", "Google Play Billing", "Stripe", "RevenueCat", "Apple Pay", "Google Pay"],
     },
     {
-      title: "Tools & DevOps",
-      skills: ["Git", "CI/CD", "Shorebird OTA", "Figma", "Postman", "App Store Connect", "Google Play Console"],
+      title: "DevOps & Tooling",
+      skills: ["Git", "CI/CD Pipelines", "Shorebird OTA", "App Store Connect", "Google Play Console", "Postman", "Figma"],
     },
     {
       title: "Spoken Languages",
-      skills: ["Bangla (Native)", "English (Fluent)", "Hindi (Conversational)"],
+      skills: ["English (Professional)", "Bangla (Native)", "Hindi (Conversational)"],
     },
   ],
 
@@ -209,30 +210,15 @@ const portfolioData: PortfolioData = {
     {
       company: "Softvence",
       role: "Mobile Application Developer",
-      period: "Oct 2025 – Present",
+      period: "Mar 2025 – Present",
       location: "Dhaka, Bangladesh",
-      description: "Developing production-ready Flutter applications for iOS and Android with scalable clean architecture.",
+      description: "Architecting and maintaining production-ready cross-platform mobile applications for iOS and Android with scalable Clean Architecture.",
       responsibilities: [
-        "Developing production-ready Flutter apps for iOS/Android using Clean Architecture, MVVM, SOLID, and reactive state management.",
-        "Built real-time communication, live tracking, chat, payments (Stripe, Apple Pay, Google Pay), subscriptions, auth, notifications, maps, and AI features.",
-        "Integrated REST APIs, GraphQL, Firebase, WebSockets, WebRTC across healthcare, fitness, AI, e-commerce, food delivery, automotive, education, and finance apps.",
-        "Managed releases across App Store/Google Play; used Git, CI/CD, Shorebird OTA, Figma, and Postman."
+        "Architect and maintain production-grade cross-platform mobile apps for iOS and Android using Clean Architecture, MVVM, and reactive state management (GetX, RxDart, Provider).",
+        "Engineered real-time features including low-latency WebSockets, WebRTC audio/video streaming, push notifications, and payment gateways (Stripe, Apple Pay, Google Pay).",
+        "Manage end-to-end releases across the Apple App Store and Google Play Console, with automated CI/CD and Shorebird over-the-air (OTA) binary updates.",
       ],
-      technologies: ["Flutter", "Dart", "Swift", "Kotlin", "Clean Architecture", "MVVM", "WebSockets", "WebRTC", "Stripe", "Apple Pay", "Google Pay", "Shorebird OTA", "Firebase"],
-    },
-    {
-      company: "Softvence",
-      role: "Flutter Developer",
-      period: "Mar 2025 – Oct 2025",
-      location: "Dhaka, Bangladesh",
-      description: "Cross-platform mobile development, reusable UI component library, and state management architecture.",
-      responsibilities: [
-        "Developed cross-platform apps with Flutter/Dart; built reusable, responsive UI components.",
-        "Integrated REST APIs and Firebase; implemented scalable state-management architecture.",
-        "Worked across health, e-commerce, food, lifestyle, logistics, and business domains; collaborated with design, backend, and QA teams.",
-        "Investigated and resolved UI, functional, API, and performance issues; supported release prep."
-      ],
-      technologies: ["Flutter", "Dart", "REST APIs", "Firebase", "GetX", "RxDart", "Provider", "Responsive UI"],
+      technologies: ["Flutter", "Dart", "Swift", "Kotlin", "Clean Architecture", "MVVM", "WebSockets", "WebRTC", "Stripe", "Shorebird OTA", "Firebase"],
     },
     {
       company: "Cityscape International Ltd.",
@@ -241,9 +227,9 @@ const portfolioData: PortfolioData = {
       location: "Dhaka, Bangladesh",
       description: "Flutter application development with Provider, app optimization, and Agile sprint participation.",
       responsibilities: [
-        "Built scalable Flutter apps using Provider state management; implemented responsive UI from design specs.",
-        "Improved application performance by 30% and reduced application bundle size by 20% through optimization.",
-        "Participated in Agile stand-ups, sprint planning, and code reviews with design/backend teams."
+        "Built responsive mobile interfaces using Provider state management following modular design specifications.",
+        "Improved application runtime performance by 30% and reduced bundle sizes by 20% through memory and asset profiling.",
+        "Participated in Agile stand-ups, sprint planning, and peer code reviews with backend and design teams.",
       ],
       technologies: ["Flutter", "Provider", "Performance Optimization", "Bundle Size Reduction", "Agile"],
     },
@@ -278,18 +264,18 @@ const portfolioData: PortfolioData = {
 
   achievements: [
     {
-      title: "22+ Apps Built, 16+ Deployed",
-      description: "Delivered and maintained production apps on Google Play and the Apple App Store.",
+      title: "16+ Production Releases",
+      description: "Architected, published, and maintained 16+ production iOS & Android apps across Google Play and App Store.",
       icon: "rocket"
     },
     {
-      title: "Performance Optimization",
-      description: "Improved app performance by 30% and reduced bundle size by 20%.",
+      title: "Performance & Bundle Optimization",
+      description: "Reduced bundle sizes by 20% and improved frame-rendering metrics by 30% through memory profiling.",
       icon: "zap"
     },
     {
-      title: "2+ Years Experience",
-      description: "Production Flutter development across AI, WebSockets, WebRTC, and payments.",
+      title: "Architectural Consistency",
+      description: "Standardized Clean Architecture, dependency injection, and reactive state management across multiple client products.",
       icon: "target"
     }
   ],
