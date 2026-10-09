@@ -43,7 +43,7 @@ export const Hero = () => {
               >
                 <a 
                   href="/Rajoan_Tamjid_CV.pdf" 
-                  download="Rajoan_Tamjid_CV.pdf"
+                  download="Rajoan_Tamjid_Antor_Resume.pdf"
                   aria-label="Download Rajoan Tamjid's CV"
                 >
                   <Download className="mr-2 h-5 w-5" />
