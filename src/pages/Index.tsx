@@ -131,7 +131,7 @@ function HeroSection() {
       {/* Eyebrow label */}
       <div className="eyebrow">
         <span className="eyebrow-line" />
-        <span className="eyebrow-text">Software Engineer — Mobile Applications</span>
+        <span className="eyebrow-text">Software Engineer — Mobile Application</span>
       </div>
 
       {/* Big headline */}
@@ -143,8 +143,8 @@ function HeroSection() {
 
       {/* Subtext */}
       <p className="text-[#d4d4d4] text-base md:text-lg leading-relaxed max-w-xl mb-10 font-normal">
-        Flutter, Swift &amp; Kotlin engineer specialized in Clean Architecture,
-        real-time systems, and production-grade delivery across iOS and Android.
+        Flutter, Dart &amp; React.js engineer specialized in Clean Architecture,
+        reactive state management, and production-grade delivery across iOS and Android.
       </p>
 
       {/* Buttons + socials */}
@@ -188,7 +188,7 @@ function HeroSection() {
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-10 border-t border-[#1a1a1a] pt-8 max-w-3xl">
         {[
           { value: "2+", label: "Years Experience" },
-          { value: "12+", label: "Production Apps" },
+          { value: "15+", label: "Production Apps" },
           { value: "iOS & Android", label: "Platforms Supported" },
           { value: "Dhaka / Remote", label: "Availability" },
         ].map((stat) => (
@@ -248,10 +248,10 @@ function AboutSection() {
 
         <p className="text-[#d4d4d4] text-base md:text-lg leading-relaxed max-w-3xl mb-14 font-normal">
           I'm Rajoan Tamjid Antor — a Software Engineer specializing in cross-platform mobile
-          applications for iOS and Android. With a B.Sc. in Computer Science &amp; Engineering,
-          I focus on delivering production-ready apps using Flutter, Swift, and Kotlin.
-          I've shipped 12+ apps across healthtech, automotive, e-commerce, entertainment,
-          and AI-driven platforms — apps that real businesses and real users depend on every day.
+          and web applications for iOS and Android. With a B.Sc. in Computer Science &amp; Engineering,
+          I focus on delivering production-ready apps using Flutter, Dart, and React.js.
+          I've architected, built, and deployed 15+ production-grade apps across HealthTech, Fitness,
+          Automotive, and Live Streaming domains — apps that real businesses and real users depend on every day.
         </p>
 
         {/* 4-card grid */}
@@ -698,23 +698,24 @@ const experiences = [
     period: "Mar 2025 — Present",
     location: "Dhaka, Bangladesh",
     bullets: [
-      "Architect and maintain production-grade cross-platform mobile apps for iOS and Android using Clean Architecture, MVVM, and reactive state management (GetX, RxDart, Provider).",
-      "Engineered real-time features — low-latency WebSockets, WebRTC audio/video streaming, push notifications, and full payment integration (Stripe, Apple Pay, Google Pay).",
-      "Manage end-to-end App Store and Google Play releases with CI/CD pipelines and Shorebird OTA binary updates.",
+      "Developed and maintained production Flutter applications for iOS and Android using Clean Architecture, MVVM, and reactive state management (GetX / RxDart).",
+      "Owned end-to-end feature development including UI, REST API integration, authentication, push notifications, maps, payments, and subscriptions.",
+      "Integrated Firebase services, Stripe payments, and real-time features across HealthTech, Fitness, Automotive, and business applications.",
+      "Managed full release lifecycle and deployment to Google Play and App Store; collaborated with design, backend, and QA teams.",
     ],
-    tech: ["Flutter", "Dart", "Swift", "Kotlin", "WebRTC", "Stripe", "Shorebird"],
+    tech: ["Flutter", "Dart", "Clean Architecture", "MVVM", "GetX", "RxDart", "Firebase", "Stripe", "REST APIs", "Google Play", "App Store"],
   },
   {
     company: "Cityscape International Ltd.",
-    role: "Jr. Flutter Developer (Intern)",
+    role: "Junior Flutter Developer (Intern)",
     period: "Dec 2024 — Feb 2025",
     location: "Dhaka, Bangladesh",
     bullets: [
-      "Built responsive mobile UI with Provider state management following modular design specifications.",
-      "Improved runtime performance by 30% and reduced bundle sizes by 20% through memory profiling and asset optimization.",
-      "Participated in Agile stand-ups, sprint planning, and peer code reviews with backend and design teams.",
+      "Built Flutter applications with responsive UI and Provider state management based on design specifications.",
+      "Optimized application performance and reduced bundle size through code and asset optimization.",
+      "Participated in Agile ceremonies, testing, and code reviews.",
     ],
-    tech: ["Flutter", "Provider", "Dart", "Performance Optimization"],
+    tech: ["Flutter", "Dart", "Provider", "Performance Optimization", "Bundle Size Reduction", "Agile"],
   },
 ];
 
@@ -793,43 +794,39 @@ function ExperienceSection() {
 ───────────────────────────────────────────── */
 const skillColumns = [
   {
-    title: "Core Engineering",
+    title: "Mobile & Web",
     items: [
-      "Flutter & Dart (production cross-platform apps)",
-      "Swift & Kotlin (native iOS/Android bridges)",
-      "State Management: GetX, Riverpod, BLoC, Provider",
-      "API Integration with interceptors, retries & caching",
-      "Firebase (Auth, Firestore, FCM, Cloud Storage)",
+      "Flutter & Dart (cross-platform iOS & Android)",
+      "React.js (modern responsive web development)",
+      "Native platform foundations (Android & iOS)",
+      "Pixel-perfect UI translation & animations",
     ],
   },
   {
-    title: "Systems & Architecture",
+    title: "Architecture & State",
     items: [
-      "Clean Architecture with modular, scalable codebases",
-      "MVVM & SOLID design principles",
-      "Feature-first project structure",
-      "Offline-first design with local caching strategies",
-      "Dependency injection & testable code",
+      "Clean Architecture & Layered Architecture",
+      "MVVM Pattern & SOLID Principles",
+      "Reactive State Management (GetX, RxDart)",
+      "Provider state management",
     ],
   },
   {
-    title: "Integrations & Real-World Systems",
+    title: "Networking & Backend",
     items: [
-      "Payment Gateways: Stripe, Apple Pay, Google Pay",
-      "In-App Purchases & RevenueCat subscriptions",
-      "WebSockets & WebRTC for real-time communication",
-      "Barcode/QR scanning & device hardware APIs",
-      "Live maps, GPS tracking & geofencing",
+      "RESTful APIs & Dio HTTP Client",
+      "Firebase (Authentication, Cloud Messaging FCM)",
+      "WebSockets & WebRTC real-time streaming",
+      "WebView & seamless platform integration",
     ],
   },
   {
-    title: "Deployment & Ownership",
+    title: "Payments, Tools & Store",
     items: [
-      "App Store & Google Play publishing (end-to-end)",
-      "Shorebird OTA binary updates",
-      "CI/CD pipeline setup & release management",
-      "Performance profiling & bundle optimization",
-      "Full lifecycle ownership (spec → production)",
+      "Stripe & RevenueCat payments / subscriptions",
+      "Google Maps integration & geolocation",
+      "Git, GitHub, VS Code, Android Studio, Xcode",
+      "Full App Store & Google Play release lifecycle",
     ],
   },
 ];
